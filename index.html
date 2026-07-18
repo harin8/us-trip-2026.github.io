@@ -817,7 +817,7 @@
     <h1>USA Trip 2026</h1>
     <div class="hero-meta">
       <span class="hero-chip">🟢 Trip in progress</span>
-      <span class="hero-chip"><span class="num" id="countdown">–</span> days until Richmond</span>
+      <span class="hero-chip"><span class="num" id="countdown">–</span> days until Capitol tour</span>
       <span class="hero-chip">👨‍👩‍👧 6 travelers</span>
     </div>
   </header>
@@ -848,16 +848,16 @@
     <div class="next-up">
       <div class="next-up-icon">🏛️</div>
       <div class="next-up-body">
-        <div class="next-up-eyebrow">Next leg · Starts Jul 25</div>
-        <div class="next-up-title">Richmond, VA · ~10 days</div>
-        <div class="next-up-detail">First stop of the traveling loop before flying to Atlanta on Aug 5</div>
+        <div class="next-up-eyebrow">Next up · Mon Jul 20</div>
+        <div class="next-up-title">US Capitol Tour · 11:20 AM · 8 passes</div>
+        <div class="next-up-detail">In DC · Then Richmond starts Jul 25</div>
       </div>
     </div>
 
     <div class="summary">
       <div class="tile">
         <div class="tile-icon">📍</div>
-        <div class="tile-num">14</div>
+        <div class="tile-num">15</div>
         <div class="tile-label">Stops</div>
       </div>
       <div class="tile">
@@ -918,7 +918,29 @@
 
     <div class="section-header">
       <div class="section-title">🗓️ Full Trip · Chronological</div>
-      <div class="section-count">14 stops</div>
+      <div class="section-count">15 stops</div>
+    </div>
+
+    <!-- Leg 0: DC (currently home) with Capitol tour -->
+    <div class="leg-card">
+      <div class="leg-header">
+        <div class="leg-emoji">🏛️</div>
+        <div class="leg-header-info">
+          <div class="leg-name">Washington, DC <span class="leg-nights">Home base</span></div>
+          <div class="leg-dates">Currently here · Traveling loop starts Jul 25</div>
+        </div>
+      </div>
+      <div class="leg-body">Home in the DC area with one big activity before hitting the road.</div>
+      <div class="leg-tags">
+        <span class="leg-tag activity">🏛️ US Capitol Tour · Mon Jul 20 · 11:20 AM</span>
+        <span class="leg-status now">Now</span>
+      </div>
+      <div class="leg-bookings">
+        <div class="booking-mini">
+          <span class="booking-mini-icon">🎟️</span>
+          <span>US Capitol Tour · 11:20 AM · 8 passes</span>
+        </div>
+      </div>
     </div>
 
     <!-- Leg 1: Richmond -->
@@ -1165,7 +1187,7 @@
       </div>
       <div class="tile">
         <div class="tile-icon">📍</div>
-        <div class="tile-num">14</div>
+        <div class="tile-num">15</div>
         <div class="tile-label">Stops</div>
       </div>
     </div>
@@ -1357,7 +1379,7 @@
   </section>
 
   <footer>
-    <div class="updated">Updated Jul 18, 2026 · v7 · Privacy pass</div>
+    <div class="updated">Updated Jul 18, 2026 · v7.1 · +Capitol tour</div>
     <div>Confirmation codes intentionally omitted — look them up via airline/hotel accounts</div>
   </footer>
 
@@ -1366,9 +1388,9 @@
 <div id="toast" class="toast">Copied to clipboard! 📋</div>
 
 <script>
-  // Countdown to Jul 25 (next leg: Richmond)
+  // Countdown to Jul 20 (Capitol Tour · 11:20 AM)
   (function() {
-    var target = new Date('2026-07-25T00:00:00-04:00');
+    var target = new Date('2026-07-20T11:20:00-04:00');
     var now = new Date();
     var days = Math.max(0, Math.ceil((target - now) / (1000 * 60 * 60 * 24)));
     var el = document.getElementById('countdown');
