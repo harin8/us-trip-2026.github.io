@@ -816,8 +816,8 @@
     <div class="hero-eyebrow">The Desai Family</div>
     <h1>USA Trip 2026</h1>
     <div class="hero-meta">
-      <span class="hero-chip">🟢 Trip in progress</span>
-      <span class="hero-chip"><span class="num" id="countdown">–</span> days until Capitol tour</span>
+      <span class="hero-chip">🏡 Currently in Voorhees, NJ</span>
+      <span class="hero-chip"><span class="num" id="countdown">–</span> days until DC trip</span>
       <span class="hero-chip">👨‍👩‍👧 6 travelers</span>
     </div>
   </header>
@@ -846,18 +846,18 @@
   <section class="panel" data-panel="overview">
 
     <div class="next-up">
-      <div class="next-up-icon">🏛️</div>
+      <div class="next-up-icon">🚙</div>
       <div class="next-up-body">
-        <div class="next-up-eyebrow">Next up · Mon Jul 20</div>
-        <div class="next-up-title">US Capitol Tour · 11:20 AM · 8 passes</div>
-        <div class="next-up-detail">In DC · Then Richmond starts Jul 25</div>
+        <div class="next-up-eyebrow">Next up · Sun Jul 19 → Wed Jul 22</div>
+        <div class="next-up-title">DC trip · Capitol Tour Mon 11:20 AM</div>
+        <div class="next-up-detail">Drive from Voorhees Sunday · 4 days in DC · Richmond starts Jul 25</div>
       </div>
     </div>
 
     <div class="summary">
       <div class="tile">
         <div class="tile-icon">📍</div>
-        <div class="tile-num">15</div>
+        <div class="tile-num">16</div>
         <div class="tile-label">Stops</div>
       </div>
       <div class="tile">
@@ -918,22 +918,37 @@
 
     <div class="section-header">
       <div class="section-title">🗓️ Full Trip · Chronological</div>
-      <div class="section-count">15 stops</div>
+      <div class="section-count">16 stops</div>
     </div>
 
-    <!-- Leg 0: DC (currently home) with Capitol tour -->
+    <!-- Currently: Voorhees -->
+    <div class="leg-card">
+      <div class="leg-header">
+        <div class="leg-emoji">🏡</div>
+        <div class="leg-header-info">
+          <div class="leg-name">Voorhees, NJ <span class="leg-nights">Currently here</span></div>
+          <div class="leg-dates">Until Sun Jul 19</div>
+        </div>
+      </div>
+      <div class="leg-body">Family base in South Jersey. Heading to DC on Sunday for a few days.</div>
+      <div class="leg-tags">
+        <span class="leg-status now">Now</span>
+      </div>
+    </div>
+
+    <!-- Weekend DC trip -->
     <div class="leg-card">
       <div class="leg-header">
         <div class="leg-emoji">🏛️</div>
         <div class="leg-header-info">
-          <div class="leg-name">Washington, DC <span class="leg-nights">Home base</span></div>
-          <div class="leg-dates">Currently here · Traveling loop starts Jul 25</div>
+          <div class="leg-name">Washington, DC <span class="leg-nights">4 days</span></div>
+          <div class="leg-dates">Sun Jul 19 – Wed Jul 22 · Weekend trip from Voorhees</div>
         </div>
       </div>
-      <div class="leg-body">Home in the DC area with one big activity before hitting the road.</div>
+      <div class="leg-body">Short DC trip built around the Capitol tour on Monday.</div>
       <div class="leg-tags">
         <span class="leg-tag activity">🏛️ US Capitol Tour · Mon Jul 20 · 11:20 AM</span>
-        <span class="leg-status now">Now</span>
+        <span class="leg-status booked">Tour booked</span>
       </div>
       <div class="leg-bookings">
         <div class="booking-mini">
@@ -1187,7 +1202,7 @@
       </div>
       <div class="tile">
         <div class="tile-icon">📍</div>
-        <div class="tile-num">15</div>
+        <div class="tile-num">16</div>
         <div class="tile-label">Stops</div>
       </div>
     </div>
@@ -1379,7 +1394,7 @@
   </section>
 
   <footer>
-    <div class="updated">Updated Jul 18, 2026 · v7.1 · +Capitol tour</div>
+    <div class="updated">Updated Jul 18, 2026 · v7.2 · Voorhees→DC</div>
     <div>Confirmation codes intentionally omitted — look them up via airline/hotel accounts</div>
   </footer>
 
@@ -1388,9 +1403,9 @@
 <div id="toast" class="toast">Copied to clipboard! 📋</div>
 
 <script>
-  // Countdown to Jul 20 (Capitol Tour · 11:20 AM)
+  // Countdown to Sun Jul 19 (DC trip departs)
   (function() {
-    var target = new Date('2026-07-20T11:20:00-04:00');
+    var target = new Date('2026-07-19T09:00:00-04:00');
     var now = new Date();
     var days = Math.max(0, Math.ceil((target - now) / (1000 * 60 * 60 * 24)));
     var el = document.getElementById('countdown');
@@ -1469,7 +1484,7 @@
     }
 
     var cities = [
-      { name: 'DC (home)', coords: [38.9531, -77.4565], detail: 'Home base', order: 0 },
+      { name: 'Washington DC', coords: [38.9072, -77.0369], detail: 'Sun Jul 19 – Wed Jul 22 · Capitol tour Mon', order: 0 },
       { name: 'Richmond, VA', coords: [37.5407, -77.4360], detail: 'Jul 25 – Aug 5', order: 1 },
       { name: 'Atlanta, GA', coords: [33.6407, -84.4277], detail: 'Aug 5–7 · Perimeter Center', order: 2 },
       { name: 'Indianapolis, IN', coords: [39.7173, -86.2944], detail: 'Aug 7–9 · Pintu Kaka', order: 3 },
