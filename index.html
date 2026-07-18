@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<title>Desai Family USA Trip 2026</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  :root {
+    --bg: #f5f3ee;
+    --bg-2: #ece9e0;
+    --card: #ffffff;
+    --ink: #17232f;
+    --ink-soft: #5a6577;
+    --ink-fade: #94a3b8;
+    --accent: #0f766e;
+    --accent-2: #14b8a6;
+    --accent-soft: #ccfbf1;
+    --warm: #d97706;
+    --warm-soft: #fef3c7;
+    --coral: #e11d48;
+    --coral-soft: #ffe4e6;
+    --purple: #7c3aed;
+    --purple-soft: #ede9fe;
+    --border: #e5e2d8;
+    --shadow-sm: 0 1px 2px rgba(20, 30, 50, 0.04), 0 2px 6px rgba(20, 30, 50, 0.04);
+    --shadow: 0 1px 3px rgba(20, 30, 50, 0.06), 0 6px 20px rgba(20, 30, 50, 0.06);
+    --shadow-lg: 0 4px 20px rgba(20, 30, 50, 0.08), 0 20px 60px rgba(20, 30, 50, 0.1);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b1220;
+      --bg-2: #111a2e;
+      --card: #1a2438;
+      --ink: #f1f5f9;
+      --ink-soft: #94a3b8;
+      --ink-fade: #64748b;
+      --accent: #5eead4;
+      --accent-2: #2dd4bf;
+      --accent-soft: #134e4a;
+      --warm: #fbbf24;
+      --warm-soft: #451a03;
+      --coral: #fb7185;
+      --coral-soft: #4c0519;
+      --purple: #a78bfa;
+      --purple-soft: #2e1065;
+      --border: #263349;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.4), 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    font-size: 16px;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(at 5% 0%, rgba(15, 118, 110, 0.06) 0px, transparent 50%),
+      radial-gradient(at 95% 20%, rgba(217, 119, 6, 0.04) 0px, transparent 50%);
+  }
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-image:
+        radial-gradient(at 5% 0%, rgba(94, 234, 212, 0.06) 0px, transparent 50%),
+        radial-gradient(at 95% 20%, rgba(251, 191, 36, 0.04) 0px, transparent 50%);
+    }
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 20px 16px 60px; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0f766e 0%, #14b8a6 60%, #0891b2 100%);
+    color: white;
+    padding: 32px 24px 28px;
+    border-radius: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15) 0, transparent 40%),
+      radial-gradient(circle at 20% 90%, rgba(255,255,255,0.08) 0, transparent 40%);
+    pointer-events: none;
+  }
+  .hero-plane {
+    position: absolute;
+    right: -30px;
+    top: -40px;
+    font-size: 200px;
+    opacity: 0.09;
+    transform: rotate(-15deg);
+    pointer-events: none;
+    line-height: 1;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    margin-bottom: 8px;
+    font-weight: 600;
+    position: relative;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    letter-spacing: -0.8px;
+    position: relative;
+  }
+  .hero-sub {
+    opacity: 0.95;
+    font-size: 15px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .hero-countdown {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+    padding: 10px 16px;
+    border-radius: 12px;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .countdown-num { font-size: 24px; font-weight: 800; letter-spacing: -1px; }
+  .countdown-label { font-size: 13px; opacity: 0.9; }
+
+  /* SUMMARY */
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .tile {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px 6px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+  .tile-icon { font-size: 18px; margin-bottom: 4px; }
+  .tile-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+  .tile-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+    font-weight: 600;
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 32px 0 14px 2px;
+  }
+  .section-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--ink-soft);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-count {
+    font-size: 12px;
+    color: var(--ink-fade);
+    font-weight: 500;
+    background: var(--card);
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+
+  /* MAP */
+  .map-card {
+    background: var(--card);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  #map {
+    height: 320px;
+    width: 100%;
+    background: var(--bg-2);
+    z-index: 1;
+  }
+  .map-legend {
+    padding: 14px 18px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ink-soft);
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+  }
+  .leaflet-container {
+    font-family: inherit !important;
+    background: var(--bg-2) !important;
+  }
+  .city-pin {
+    background: transparent;
+    border: none;
+  }
+  .city-pin-inner {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(15, 118, 110, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 11px;
+    position: relative;
+    transform: translate(-50%, -50%);
+  }
+  .city-pin-inner::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    opacity: 0.4;
+    animation: pulse 2s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(2); opacity: 0; }
+  }
+  .leaflet-popup-content-wrapper {
+    background: var(--card) !important;
+    color: var(--ink) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--shadow) !important;
+  }
+  .leaflet-popup-tip {
+    background: var(--card) !important;
+  }
+  .leaflet-popup-content {
+    margin: 12px 14px !important;
+    font-size: 13px !important;
+  }
+  .popup-title {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+  .popup-sub {
+    color: var(--ink-soft);
+    font-size: 12px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 12px;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+    opacity: 0.3;
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot {
+    position: absolute;
+    left: -32px;
+    top: 6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 3px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .timeline-date {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .timeline-content {
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .timeline-content strong { font-weight: 600; }
+  .timeline-note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  /* FLIGHT CARDS */
+  .flight-card {
+    background: var(--card);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .flight-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+  }
+  .flight-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 10px;
+  }
+  .flight-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .flight-airline {
+    font-size: 11px;
+    color: var(--ink-fade);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .flight-route {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .flight-endpoint { flex: 1; min-width: 0; }
+  .airport-code {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .airport-city {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+  .flight-time {
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 700;
+    margin-top: 10px;
+    letter-spacing: -0.3px;
+  }
+  .flight-path {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0 10px;
+    min-width: 80px;
+  }
+  .flight-path-line {
+    width: 100%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--accent) 0 6px, transparent 6px 10px);
+    position: relative;
+  }
+  .flight-path-line::after {
+    content: "✈";
+    position: absolute;
+    right: -4px;
+    top: -10px;
+    color: var(--accent);
+    font-size: 14px;
+  }
+  .flight-path-duration {
+    font-size: 11px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .flight-endpoint.right { text-align: right; }
+
+  .flight-meta {
+    display: flex;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--bg-2);
+    border-radius: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    align-items: center;
+  }
+  .meta-chip {
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .meta-chip strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .meta-sep { color: var(--ink-fade); }
+
+  .pnr-row {
+    border-top: 1px dashed var(--border);
+    padding-top: 14px;
+    margin-top: 14px;
+  }
+  .pnr-row:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .pnr-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .pnr-code {
+    background: linear-gradient(135deg, var(--warm-soft) 0%, var(--warm-soft) 100%);
+    color: var(--warm);
+    font-family: "SF Mono", Menlo, Monaco, "Courier New", monospace;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 5px 11px;
+    border-radius: 8px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    user-select: all;
+    transition: transform 0.1s, box-shadow 0.15s;
+    border: 1px solid rgba(217, 119, 6, 0.2);
+  }
+  .pnr-code:active { transform: scale(0.95); }
+  .pnr-code:hover { box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2); }
+  .pnr-label {
+    font-size: 11px;
+    color: var(--ink-soft);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .pnr-pax {
+    font-size: 14px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .pnr-detail {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .pnr-detail .dot { padding: 0 6px; opacity: 0.5; }
+
+  /* CITY CARDS (for hotels/stays/activities) */
+  .city-card {
+    background: var(--card);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  .city-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .city-emoji {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .city-info { flex: 1; min-width: 0; }
+  .city-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+  }
+  .city-dates {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  /* STAY/CAR/ACTIVITY placeholder */
+  .empty-slot {
+    padding: 20px;
+    text-align: center;
+    background: var(--bg-2);
+    border: 1.5px dashed var(--border);
+    border-radius: 12px;
+    color: var(--ink-fade);
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .empty-slot-icon {
+    font-size: 22px;
+    display: block;
+    margin-bottom: 6px;
+    opacity: 0.5;
+  }
+
+  /* Booked item card (hotel/car/etc) */
+  .booking-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+  }
+  .booking-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .booking-meta {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .booking-conf {
+    display: inline-block;
+    background: var(--warm-soft);
+    color: var(--warm);
+    font-family: "SF Mono", Menlo, Monaco, monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* PEOPLE */
+  .roster {
+    background: var(--card);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  .roster-row {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .roster-row:last-child { border-bottom: none; }
+  .roster-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-soft), var(--accent-soft));
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+    border: 2px solid var(--card);
+    box-shadow: 0 0 0 1px var(--border);
+    letter-spacing: -0.5px;
+  }
+  .roster-info { flex: 1; min-width: 0; }
+  .roster-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .roster-role {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .roster-pnrs {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-family: "SF Mono", Menlo, Monaco, monospace;
+    font-size: 10px;
+    color: var(--ink-fade);
+    text-align: right;
+  }
+
+  /* NOTE CARDS */
+  .note-card {
+    background: var(--card);
+    border-left: 4px solid var(--warm);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow-sm);
+  }
+  .note-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .note-body {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 12px 12px;
+    color: var(--ink-soft);
+    font-size: 12px;
+  }
+  footer .updated {
+    display: inline-block;
+    background: var(--card);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--ink);
+    color: var(--bg);
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Tiny screens */
+  @media (max-width: 380px) {
+    .airport-code { font-size: 24px; }
+    .hero h1 { font-size: 24px; }
+    .tile-num { font-size: 18px; }
+    .flight-path { min-width: 60px; }
+    .tile-label { font-size: 9px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-plane">✈</div>
+    <div class="hero-eyebrow">The Desai Family</div>
+    <h1>USA Trip 2026</h1>
+    <div class="hero-sub">A 3-month adventure across the states 🇺🇸</div>
+    <div class="hero-countdown">
+      <span class="countdown-num" id="countdown">–</span>
+      <span class="countdown-label">days until we take off</span>
+    </div>
+  </div>
+
+  <!-- SUMMARY TILES -->
+  <div class="summary">
+    <div class="tile">
+      <div class="tile-icon">👨‍👩‍👧</div>
+      <div class="tile-num">6</div>
+      <div class="tile-label">Travelers</div>
+    </div>
+    <div class="tile">
+      <div class="tile-icon">✈️</div>
+      <div class="tile-num">5</div>
+      <div class="tile-label">Flights</div>
+    </div>
+    <div class="tile">
+      <div class="tile-icon">🏨</div>
+      <div class="tile-num">0</div>
+      <div class="tile-label">Hotels</div>
+    </div>
+    <div class="tile">
+      <div class="tile-icon">🚗</div>
+      <div class="tile-num">0</div>
+      <div class="tile-label">Rentals</div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="section-header">
+    <div class="section-title">🗺️ Our Route</div>
+    <div class="section-count">3 cities</div>
+  </div>
+
+  <div class="map-card">
+    <div id="map"></div>
+    <div class="map-legend">
+      <div class="legend-item">
+        <span class="legend-dot" style="background: var(--accent);"></span>
+        <span>Cities on the itinerary</span>
+      </div>
+      <div class="legend-item">
+        <span>✈️ Booked flights</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section-header">
+    <div class="section-title">📅 Journey Timeline</div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-date">Aug 5 · Wednesday</div>
+      <div class="timeline-content"><strong>Fly to Atlanta</strong></div>
+      <div class="timeline-note">Depart DC (IAD) 7:48 AM → Arrive Atlanta 9:59 AM</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-date">Aug 5–7 · 2 nights</div>
+      <div class="timeline-content"><strong>Stay in Atlanta</strong></div>
+      <div class="timeline-note">Hotel / stay TBD · car rental TBD</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-date">Aug 7 · Friday</div>
+      <div class="timeline-content"><strong>Fly to Indianapolis</strong> (5 people — without Harin)</div>
+      <div class="timeline-note">Depart ATL 9:47 AM → Arrive Indianapolis 11:25 AM</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">?</div>
+      <div class="timeline-date">Aug 7 onwards</div>
+      <div class="timeline-content"><strong>Indianapolis stay</strong></div>
+      <div class="timeline-note">Details to be added as they're booked</div>
+    </div>
+  </div>
+
+  <!-- FLIGHTS -->
+  <div class="section-header">
+    <div class="section-title">✈️ Flights</div>
+    <div class="section-count">5 booked</div>
+  </div>
+
+  <!-- Aug 5 - IAD to ATL -->
+  <div class="flight-card">
+    <div class="flight-header">
+      <span class="flight-date">📅 Wed, Aug 5, 2026</span>
+      <span class="flight-airline">Frontier</span>
+    </div>
+    <div class="flight-route">
+      <div class="flight-endpoint">
+        <div class="airport-code">IAD</div>
+        <div class="airport-city">Washington-Dulles</div>
+        <div class="flight-time">7:48 AM</div>
+      </div>
+      <div class="flight-path">
+        <div class="flight-path-line"></div>
+        <div class="flight-path-duration">2h 11m</div>
+      </div>
+      <div class="flight-endpoint right">
+        <div class="airport-code">ATL</div>
+        <div class="airport-city">Atlanta</div>
+        <div class="flight-time">9:59 AM</div>
+      </div>
+    </div>
+    <div class="flight-meta">
+      <span class="meta-chip"><strong>F9 4707</strong></span>
+      <span class="meta-sep">·</span>
+      <span class="meta-chip">Nonstop</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-chip">6 travelers</span>
+    </div>
+
+    <div class="pnr-row">
+      <div class="pnr-header">
+        <span class="pnr-code" onclick="copy(this)">UGCLQM</span>
+        <span class="pnr-label">5 passengers</span>
+      </div>
+      <div class="pnr-pax">Harin · Ketkibahen · Rudra · Aishwariya · Radhika</div>
+      <div class="pnr-detail">No seats assigned <span class="dot">·</span> No bags on record</div>
+    </div>
+
+    <div class="pnr-row">
+      <div class="pnr-header">
+        <span class="pnr-code" onclick="copy(this)">DDFBSS</span>
+        <span class="pnr-label">1 passenger</span>
+      </div>
+      <div class="pnr-pax">Rajendra</div>
+      <div class="pnr-detail">Seat 1C <span class="dot">·</span> 1 carry-on + 2 checked</div>
+    </div>
+  </div>
+
+  <!-- Aug 7 - ATL to IND -->
+  <div class="flight-card">
+    <div class="flight-header">
+      <span class="flight-date">📅 Fri, Aug 7, 2026</span>
+      <span class="flight-airline">Frontier</span>
+    </div>
+    <div class="flight-route">
+      <div class="flight-endpoint">
+        <div class="airport-code">ATL</div>
+        <div class="airport-city">Atlanta</div>
+        <div class="flight-time">9:47 AM</div>
+      </div>
+      <div class="flight-path">
+        <div class="flight-path-line"></div>
+        <div class="flight-path-duration">1h 38m</div>
+      </div>
+      <div class="flight-endpoint right">
+        <div class="airport-code">IND</div>
+        <div class="airport-city">Indianapolis</div>
+        <div class="flight-time">11:25 AM</div>
+      </div>
+    </div>
+    <div class="flight-meta">
+      <span class="meta-chip"><strong>F9 2497</strong></span>
+      <span class="meta-sep">·</span>
+      <span class="meta-chip">Nonstop</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-chip">5 travelers</span>
+    </div>
+
+    <div class="pnr-row">
+      <div class="pnr-header">
+        <span class="pnr-code" onclick="copy(this)">EE37SC</span>
+        <span class="pnr-label">1 passenger</span>
+      </div>
+      <div class="pnr-pax">Rajendra</div>
+      <div class="pnr-detail">Seat 1A <span class="dot">·</span> 1 carry-on + 2 checked</div>
+    </div>
+
+    <div class="pnr-row">
+      <div class="pnr-header">
+        <span class="pnr-code" onclick="copy(this)">LBU3UY</span>
+        <span class="pnr-label">1 passenger</span>
+      </div>
+      <div class="pnr-pax">Ketkibahen</div>
+      <div class="pnr-detail">No seat assigned <span class="dot">·</span> No bags on record</div>
+    </div>
+
+    <div class="pnr-row">
+      <div class="pnr-header">
+        <span class="pnr-code" onclick="copy(this)">PW17JR</span>
+        <span class="pnr-label">3 passengers</span>
+      </div>
+      <div class="pnr-pax">Rudra · Aishwariya · Radhika</div>
+      <div class="pnr-detail">No seats assigned <span class="dot">·</span> No bags on record</div>
+    </div>
+  </div>
+
+  <!-- STAYS -->
+  <div class="section-header">
+    <div class="section-title">🏨 Stays</div>
+    <div class="section-count">0 booked</div>
+  </div>
+
+  <div class="city-card">
+    <div class="city-card-header">
+      <div class="city-emoji">🍑</div>
+      <div class="city-info">
+        <div class="city-name">Atlanta, GA</div>
+        <div class="city-dates">Aug 5 – Aug 7 · 2 nights</div>
+      </div>
+    </div>
+    <div class="empty-slot">
+      <span class="empty-slot-icon">🏨</span>
+      <div>No stay booked yet</div>
+      <div style="font-size: 11px; margin-top: 4px;">Hotel · Airbnb · Family stay?</div>
+    </div>
+  </div>
+
+  <div class="city-card">
+    <div class="city-card-header">
+      <div class="city-emoji">🏁</div>
+      <div class="city-info">
+        <div class="city-name">Indianapolis, IN</div>
+        <div class="city-dates">Aug 7 onwards</div>
+      </div>
+    </div>
+    <div class="empty-slot">
+      <span class="empty-slot-icon">🏨</span>
+      <div>No stay booked yet</div>
+      <div style="font-size: 11px; margin-top: 4px;">Add hotel/airbnb when booked</div>
+    </div>
+  </div>
+
+  <!-- CAR RENTALS -->
+  <div class="section-header">
+    <div class="section-title">🚗 Car Rentals</div>
+    <div class="section-count">0 booked</div>
+  </div>
+
+  <div class="empty-slot">
+    <span class="empty-slot-icon">🚗</span>
+    <div>No car rentals booked yet</div>
+    <div style="font-size: 11px; margin-top: 4px;">Add rental car details as you book them</div>
+  </div>
+
+  <!-- ACTIVITIES -->
+  <div class="section-header">
+    <div class="section-title">🎡 Things to Do</div>
+    <div class="section-count">Coming soon</div>
+  </div>
+
+  <div class="empty-slot">
+    <span class="empty-slot-icon">✨</span>
+    <div>Activities & places to visit</div>
+    <div style="font-size: 11px; margin-top: 4px;">Will be added based on weather & interests</div>
+  </div>
+
+  <!-- PEOPLE -->
+  <div class="section-header">
+    <div class="section-title">👥 The Travelers</div>
+    <div class="section-count">6 people</div>
+  </div>
+
+  <div class="roster">
+    <div class="roster-row">
+      <div class="roster-avatar">Ha</div>
+      <div class="roster-info">
+        <div class="roster-name">Harin</div>
+        <div class="roster-role">Trip planner</div>
+      </div>
+      <div class="roster-pnrs">
+        <span>Aug 5: UGCLQM</span>
+      </div>
+    </div>
+    <div class="roster-row">
+      <div class="roster-avatar">Ra</div>
+      <div class="roster-info">
+        <div class="roster-name">Rajendra</div>
+        <div class="roster-role">Father · Rajendra Anandray Desai</div>
+      </div>
+      <div class="roster-pnrs">
+        <span>Aug 5: DDFBSS</span>
+        <span>Aug 7: EE37SC</span>
+      </div>
+    </div>
+    <div class="roster-row">
+      <div class="roster-avatar">Ke</div>
+      <div class="roster-info">
+        <div class="roster-name">Ketkibahen</div>
+        <div class="roster-role">Mother · Ketkibahen Rajendra Desai</div>
+      </div>
+      <div class="roster-pnrs">
+        <span>Aug 5: UGCLQM</span>
+        <span>Aug 7: LBU3UY</span>
+      </div>
+    </div>
+    <div class="roster-row">
+      <div class="roster-avatar">Ru</div>
+      <div class="roster-info">
+        <div class="roster-name">Rudra</div>
+        <div class="roster-role">Brother · Rudra Rajendra Desai</div>
+      </div>
+      <div class="roster-pnrs">
+        <span>Aug 5: UGCLQM</span>
+        <span>Aug 7: PW17JR</span>
+      </div>
+    </div>
+    <div class="roster-row">
+      <div class="roster-avatar">Ai</div>
+      <div class="roster-info">
+        <div class="roster-name">Aishwariya</div>
+        <div class="roster-role">Sister-in-law · Aishwariya Rudra Desai</div>
+      </div>
+      <div class="roster-pnrs">
+        <span>Aug 5: UGCLQM</span>
+        <span>Aug 7: PW17JR</span>
+      </div>
+    </div>
+    <div class="roster-row">
+      <div class="roster-avatar">👶</div>
+      <div class="roster-info">
+        <div class="roster-name">Radhika</div>
+        <div class="roster-role">Niece · 2 years old</div>
+      </div>
+      <div class="roster-pnrs">
+        <span>Aug 5: UGCLQM</span>
+        <span>Aug 7: PW17JR</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WATCH ITEMS -->
+  <div class="section-header">
+    <div class="section-title">⚠️ Things to Sort Out</div>
+  </div>
+
+  <div class="note-card">
+    <div class="note-title">🎒 Add bags before prices climb</div>
+    <div class="note-body">Only Rajendra has bags booked. For a 3-month trip, everyone else likely needs luggage. Add now via frontier.com — cheapest at booking, most expensive at the airport gate.</div>
+  </div>
+
+  <div class="note-card">
+    <div class="note-title">💺 Assign seats near Radhika</div>
+    <div class="note-body">Most seats unassigned. Frontier auto-assigns at check-in — could split Rudra & Aishwariya from Radhika (2y). Pay ~$15–$25/seat now to sit together.</div>
+  </div>
+
+  <div class="note-card">
+    <div class="note-title">🛬 Harin's onward flight</div>
+    <div class="note-body">Not booked on the Aug 7 ATL→IND leg. Decide: stay in Atlanta, fly to Indianapolis, or return to DC.</div>
+  </div>
+
+  <div class="note-card">
+    <div class="note-title">🌅 Early departure Aug 5</div>
+    <div class="note-body">7:48 AM from IAD means being at the airport by ~5:45 AM. Plan the ride to the airport in advance.</div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="updated">Updated Jul 18, 2026</div>
+    <div>Tap any PNR code to copy it 📋</div>
+  </footer>
+
+</div>
+
+<div id="toast" class="toast">Copied to clipboard! 📋</div>
+
+<script>
+  // Countdown to Aug 5, 2026
+  (function() {
+    const target = new Date('2026-08-05T07:48:00-04:00');
+    const now = new Date();
+    const days = Math.max(0, Math.ceil((target - now) / (1000 * 60 * 60 * 24)));
+    const el = document.getElementById('countdown');
+    if (el) el.textContent = days;
+  })();
+
+  // PNR copy
+  function copy(el) {
+    const text = el.textContent.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(showToast).catch(fallback);
+    } else {
+      fallback();
+    }
+    function fallback() {
+      const t = document.createElement('textarea');
+      t.value = text;
+      t.style.position = 'fixed';
+      t.style.opacity = 0;
+      document.body.appendChild(t);
+      t.select();
+      try { document.execCommand('copy'); showToast(); } catch (e) {}
+      document.body.removeChild(t);
+    }
+  }
+  function showToast() {
+    const toast = document.getElementById('toast');
+    toast.textContent = 'Copied to clipboard! 📋';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1600);
+  }
+
+  // MAP init — deferred until Leaflet is fully loaded to avoid race conditions
+  function initMap() {
+    if (typeof L === 'undefined') {
+      // Leaflet failed to load (offline, blocked CDN, file:// restrictions, etc.)
+      const mapEl = document.getElementById('map');
+      if (mapEl) {
+        mapEl.innerHTML = '<div style="padding:40px 20px;text-align:center;color:#5a6577;font-size:13px;line-height:1.6;">🗺️<br><br>Map couldn\'t load.<br><span style="font-size:11px;opacity:0.7;">Needs internet to fetch map tiles.</span></div>';
+      }
+      return;
+    }
+
+    const cities = [
+      { name: 'Washington DC', code: 'IAD', coords: [38.9531, -77.4565], detail: 'Home base · Trip starts here', order: 1 },
+      { name: 'Atlanta', code: 'ATL', coords: [33.6407, -84.4277], detail: 'Aug 5–7 · 2 nights', order: 2 },
+      { name: 'Indianapolis', code: 'IND', coords: [39.7173, -86.2944], detail: 'Aug 7 onwards', order: 3 }
+    ];
+
+    const map = L.map('map', {
+      zoomControl: true,
+      scrollWheelZoom: false,
+      dragging: !L.Browser.mobile,
+      tap: false
+    });
+
+    // Clean, minimal tile set that matches the design
+    const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const tileUrl = isDark
+      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+      : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+    L.tileLayer(tileUrl, {
+      attribution: '&copy; <a href="https://openstreetmap.org">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 18
+    }).addTo(map);
+
+    const bounds = L.latLngBounds(cities.map(c => c.coords));
+    map.fitBounds(bounds, { padding: [40, 40] });
+
+    cities.forEach(city => {
+      const icon = L.divIcon({
+        className: 'city-pin',
+        html: '<div class="city-pin-inner">' + city.order + '</div>',
+        iconSize: [26, 26],
+        iconAnchor: [13, 13]
+      });
+      L.marker(city.coords, { icon }).addTo(map)
+        .bindPopup('<div class="popup-title">' + city.code + ' · ' + city.name + '</div><div class="popup-sub">' + city.detail + '</div>');
+    });
+
+    const routes = [
+      { from: cities[0].coords, to: cities[1].coords },
+      { from: cities[1].coords, to: cities[2].coords }
+    ];
+    routes.forEach(r => {
+      L.polyline([r.from, r.to], {
+        color: '#0f766e',
+        weight: 2.5,
+        opacity: 0.7,
+        dashArray: '6, 8'
+      }).addTo(map);
+    });
+  }
+
+  // Run map init after everything finishes loading — most robust against CDN timing
+  if (document.readyState === 'complete') {
+    initMap();
+  } else {
+    window.addEventListener('load', initMap);
+  }
+</script>
+
+</body>
+</html>
