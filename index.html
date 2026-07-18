@@ -677,6 +677,10 @@
     margin-bottom: 10px;
     box-shadow: var(--shadow-sm);
   }
+  .note-card.critical {
+    border-left-color: var(--coral);
+    background: linear-gradient(90deg, var(--coral-soft) 0%, var(--card) 40%);
+  }
   .note-title {
     font-weight: 700;
     font-size: 14px;
@@ -686,6 +690,7 @@
     align-items: center;
     gap: 6px;
   }
+  .note-card.critical .note-title { color: var(--coral); }
   .note-body {
     font-size: 13px;
     color: var(--ink-soft);
@@ -776,7 +781,7 @@
     </div>
     <div class="tile">
       <div class="tile-icon">🚗</div>
-      <div class="tile-num">0</div>
+      <div class="tile-num">1</div>
       <div class="tile-label">Rentals</div>
     </div>
   </div>
@@ -816,7 +821,7 @@
       <div class="timeline-dot">2</div>
       <div class="timeline-date">Aug 5–7 · 2 nights</div>
       <div class="timeline-content"><strong>Stay in Atlanta</strong></div>
-      <div class="timeline-note">Hotel / stay TBD · car rental TBD</div>
+      <div class="timeline-note">🚗 Hertz Kia Carnival (pickup Aug 5 · return Aug 7) · Stay TBD</div>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot">3</div>
@@ -984,13 +989,46 @@
   <!-- CAR RENTALS -->
   <div class="section-header">
     <div class="section-title">🚗 Car Rentals</div>
-    <div class="section-count">0 booked</div>
+    <div class="section-count">1 booked</div>
   </div>
 
-  <div class="empty-slot">
-    <span class="empty-slot-icon">🚗</span>
-    <div>No car rentals booked yet</div>
-    <div style="font-size: 11px; margin-top: 4px;">Add rental car details as you book them</div>
+  <div class="flight-card">
+    <div class="flight-header">
+      <span class="flight-date">🚗 Aug 5 – Aug 7, 2026</span>
+      <span class="flight-airline">Hertz</span>
+    </div>
+    <div class="flight-route">
+      <div class="flight-endpoint">
+        <div class="airport-code" style="font-size: 22px;">Pickup</div>
+        <div class="airport-city">ATL Airport</div>
+        <div class="flight-time">Aug 5 · 10:00 AM</div>
+      </div>
+      <div class="flight-path">
+        <div class="flight-path-line" style="background: repeating-linear-gradient(90deg, var(--warm) 0 6px, transparent 6px 10px);"></div>
+        <div class="flight-path-duration">2 days</div>
+      </div>
+      <div class="flight-endpoint right">
+        <div class="airport-code" style="font-size: 22px;">Return</div>
+        <div class="airport-city">ATL Airport</div>
+        <div class="flight-time">Aug 7 · 10:00 AM</div>
+      </div>
+    </div>
+    <div class="flight-meta">
+      <span class="meta-chip"><strong>🚙 Kia Carnival</strong></span>
+      <span class="meta-sep">·</span>
+      <span class="meta-chip">Minivan · 7–8 seats</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-chip"><strong>$197.49</strong></span>
+    </div>
+
+    <div class="pnr-row">
+      <div class="pnr-header">
+        <span class="pnr-code" onclick="copy(this)">L6512959695</span>
+        <span class="pnr-label">Confirmation #</span>
+      </div>
+      <div class="pnr-pax">Driver: Harin · Hertz Gold #2006577</div>
+      <div class="pnr-detail">Paid by Visa <span class="dot">·</span> Card protects the rental — check for CDW coverage</div>
+    </div>
   </div>
 
   <!-- ACTIVITIES -->
@@ -1085,6 +1123,11 @@
   </div>
 
   <div class="note-card">
+    <div class="note-title">👶 Car seat for Radhika (Georgia law)</div>
+    <div class="note-body">Georgia requires kids under 4 in a car seat. Hertz rents them for ~$13/day ($26 total) — add when picking up, or bring your own.</div>
+  </div>
+
+  <div class="note-card">
     <div class="note-title">🎒 Add bags before prices climb</div>
     <div class="note-body">Only Rajendra has bags booked. For a 3-month trip, everyone else likely needs luggage. Add now via frontier.com — cheapest at booking, most expensive at the airport gate.</div>
   </div>
@@ -1106,7 +1149,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="updated">Updated Jul 18, 2026</div>
+    <div class="updated">Updated Jul 18, 2026 · v3.1</div>
     <div>Tap any PNR code to copy it 📋</div>
   </footer>
 
