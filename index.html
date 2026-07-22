@@ -862,7 +862,7 @@
       </div>
       <div class="tile">
         <div class="tile-icon">✈️</div>
-        <div class="tile-num">5</div>
+        <div class="tile-num">7</div>
         <div class="tile-label">Flights</div>
       </div>
       <div class="tile">
@@ -1016,29 +1016,50 @@
       </div>
     </div>
 
-    <!-- Leg 3: Indianapolis + Chicago -->
+    <!-- Leg 3: Indianapolis -->
     <div class="leg-card">
       <div class="leg-header">
         <div class="leg-emoji">🏁</div>
         <div class="leg-header-info">
-          <div class="leg-name">Indianapolis + Chicago <span class="leg-nights">2 nights</span></div>
-          <div class="leg-dates">Aug 7 – Aug 9</div>
+          <div class="leg-name">Indianapolis, IN <span class="leg-nights">~1 night</span></div>
+          <div class="leg-dates">Aug 7 (arrive) → drive to Chicago</div>
         </div>
       </div>
-      <div class="leg-body">Visit Pintu Kaka in Indianapolis, plus a Chicago run (~3h drive).</div>
+      <div class="leg-body">Visit Pintu Kaka. Then drive ~3h north to Chicago.</div>
       <div class="leg-tags">
         <span class="leg-tag person">👋 Pintu Kaka</span>
-        <span class="leg-tag activity">🌆 Chicago</span>
-        <span class="leg-status booked">Flight booked</span>
+        <span class="leg-status booked">Flight in booked</span>
       </div>
       <div class="leg-bookings">
         <div class="booking-mini">
           <span class="booking-mini-icon">✈️</span>
-          <span>Frontier F9 2497 · ATL → IND · 9:47 AM</span>
+          <span>Frontier F9 2497 · ATL → IND · 9:47 AM (5 travelers)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leg 3b: Chicago -->
+    <div class="leg-card">
+      <div class="leg-header">
+        <div class="leg-emoji">🌆</div>
+        <div class="leg-header-info">
+          <div class="leg-name">Chicago, IL <span class="leg-nights">~1–2 nights</span></div>
+          <div class="leg-dates">Aug 8–9 · Fly out Sunday evening</div>
+        </div>
+      </div>
+      <div class="leg-body">Chicago stopover before flying back to Philadelphia (Voorhees).</div>
+      <div class="leg-tags">
+        <span class="leg-tag activity">🌆 The Windy City</span>
+        <span class="leg-status booked">Flight out booked</span>
+      </div>
+      <div class="leg-bookings">
+        <div class="booking-mini">
+          <span class="booking-mini-icon">✈️</span>
+          <span>Frontier F9 2112 · ORD → PHL · Sun 8:52 PM → Mon 12:15 AM</span>
         </div>
         <div class="booking-mini">
           <span class="booking-mini-icon">✈️</span>
-          <span>Rajendra · Ketkibahen · Rudra · Aishwariya · Radhika</span>
+          <span>Rajendra (Seat 1A · 1CO + 2CK) + Rudra + Aishwariya + Ketkibahen + Radhika</span>
         </div>
       </div>
     </div>
@@ -1189,7 +1210,7 @@
     <div class="summary" style="margin-bottom: 24px;">
       <div class="tile">
         <div class="tile-icon">✈️</div>
-        <div class="tile-num">5</div>
+        <div class="tile-num">7</div>
         <div class="tile-label">Flights</div>
       </div>
       <div class="tile">
@@ -1211,7 +1232,7 @@
 
     <div class="section-header">
       <div class="section-title">✈️ All Flights</div>
-      <div class="section-count">5 · 2 dates</div>
+      <div class="section-count">7 · 3 dates</div>
     </div>
     <div class="booking-card">
       <div class="booking-header">
@@ -1268,6 +1289,34 @@
       <div class="pnr-row">
         <div class="pnr-pax">👥 5 passengers total (3 separate bookings)</div>
         <div class="pnr-detail">Rajendra (Seat 1A) · Ketkibahen · Rudra · Aishwariya · Radhika</div>
+      </div>
+    </div>
+
+    <!-- ORD → PHL Aug 9 -->
+    <div class="booking-card">
+      <div class="booking-header">
+        <span class="booking-badge">📅 Sun, Aug 9, 2026 · Late</span>
+        <span class="booking-airline">Frontier F9 2112</span>
+      </div>
+      <div class="booking-route">
+        <div class="booking-endpoint">
+          <div class="endpoint-code">ORD</div>
+          <div class="endpoint-city">Chicago-O'Hare</div>
+          <div class="endpoint-time">8:52 PM</div>
+        </div>
+        <div class="booking-path">
+          <div class="path-line"></div>
+          <div class="path-duration">2h 23m</div>
+        </div>
+        <div class="booking-endpoint right">
+          <div class="endpoint-code">PHL</div>
+          <div class="endpoint-city">Philadelphia</div>
+          <div class="endpoint-time">12:15 AM Mon</div>
+        </div>
+      </div>
+      <div class="pnr-row">
+        <div class="pnr-pax">👥 5 passengers total (2 separate bookings)</div>
+        <div class="pnr-detail">Rajendra (Seat 1A · 1 carry-on + 2 checked) · Ketkibahen · Rudra · Aishwariya · Radhika</div>
       </div>
     </div>
 
@@ -1396,7 +1445,7 @@
   </section>
 
   <footer>
-    <div class="updated">Updated Jul 18, 2026 · v7.3</div>
+    <div class="updated">Updated Jul 18, 2026 · v7.4 · +ORD→PHL</div>
     <div>Confirmation codes intentionally omitted — look them up via airline/hotel accounts</div>
   </footer>
 
@@ -1490,7 +1539,7 @@
       { name: 'Richmond, VA', coords: [37.5407, -77.4360], detail: 'Jul 25 – Aug 5', order: 1 },
       { name: 'Atlanta, GA', coords: [33.6407, -84.4277], detail: 'Aug 5–7 · Perimeter Center', order: 2 },
       { name: 'Indianapolis, IN', coords: [39.7173, -86.2944], detail: 'Aug 7–9 · Pintu Kaka', order: 3 },
-      { name: 'Chicago, IL', coords: [41.8781, -87.6298], detail: 'Side trip from Indy', order: 4 },
+      { name: 'Chicago, IL', coords: [41.8781, -87.6298], detail: 'Aug 8–9 · Fly out from ORD Sun 8:52 PM', order: 4 },
       { name: 'Montclair, NJ', coords: [40.8259, -74.2090], detail: 'Aug 10–25 · Sunita\'s home', order: 5 },
       { name: 'NYC', coords: [40.7128, -74.0060], detail: 'Day trip from Montclair', order: 5 },
       { name: 'Niagara Falls', coords: [43.0962, -79.0377], detail: 'Day trip from Montclair', order: 5 },
@@ -1525,8 +1574,8 @@
     // Fit to bounds
     map.fitBounds(L.latLngBounds(cities.map(function(c) { return c.coords; })), { padding: [30, 30] });
 
-    // Route order (main stops only, not day trips): DC, Richmond, ATL, IND, Montclair, Voorhees, SF, LA, LV, GC, VT
-    var routeOrder = [0, 1, 2, 3, 5, 8, 9, 11, 12, 13, 14];
+    // Route: DC, Richmond, ATL, IND, Chicago, Montclair, Voorhees, SF, LA, LV, GC, VT
+    var routeOrder = [0, 1, 2, 3, 4, 5, 8, 9, 11, 12, 13, 14];
     var routePoints = routeOrder.map(function(i) { return cities[i].coords; });
     L.polyline(routePoints, {
       color: '#0f766e',
