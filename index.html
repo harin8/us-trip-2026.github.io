@@ -12,790 +12,202 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   :root {
-    --bg: #f5f3ee;
-    --bg-2: #ece9e0;
-    --card: #ffffff;
-    --ink: #17232f;
-    --ink-soft: #5a6577;
-    --ink-fade: #94a3b8;
-    --accent: #0f766e;
-    --accent-2: #14b8a6;
-    --accent-soft: #ccfbf1;
-    --warm: #d97706;
-    --warm-soft: #fef3c7;
-    --coral: #e11d48;
-    --coral-soft: #ffe4e6;
-    --purple: #7c3aed;
-    --purple-soft: #ede9fe;
+    --bg: #f5f3ee; --bg-2: #ece9e0; --card: #ffffff;
+    --ink: #17232f; --ink-soft: #5a6577; --ink-fade: #94a3b8;
+    --accent: #0f766e; --accent-2: #14b8a6; --accent-soft: #ccfbf1;
+    --warm: #d97706; --warm-soft: #fef3c7;
+    --coral: #e11d48; --coral-soft: #ffe4e6;
+    --purple: #7c3aed; --purple-soft: #ede9fe;
     --border: #e5e2d8;
-    --shadow-sm: 0 1px 2px rgba(20, 30, 50, 0.04), 0 2px 6px rgba(20, 30, 50, 0.04);
-    --shadow: 0 1px 3px rgba(20, 30, 50, 0.06), 0 6px 20px rgba(20, 30, 50, 0.06);
-    --shadow-lg: 0 4px 20px rgba(20, 30, 50, 0.08), 0 20px 60px rgba(20, 30, 50, 0.1);
+    --shadow-sm: 0 1px 2px rgba(20,30,50,.04), 0 2px 6px rgba(20,30,50,.04);
+    --shadow: 0 1px 3px rgba(20,30,50,.06), 0 6px 20px rgba(20,30,50,.06);
+    --shadow-lg: 0 4px 20px rgba(20,30,50,.08), 0 20px 60px rgba(20,30,50,.1);
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0b1220;
-      --bg-2: #111a2e;
-      --card: #1a2438;
-      --ink: #f1f5f9;
-      --ink-soft: #94a3b8;
-      --ink-fade: #64748b;
-      --accent: #5eead4;
-      --accent-2: #2dd4bf;
-      --accent-soft: #134e4a;
-      --warm: #fbbf24;
-      --warm-soft: #451a03;
-      --coral: #fb7185;
-      --coral-soft: #4c0519;
-      --purple: #a78bfa;
-      --purple-soft: #2e1065;
+      --bg: #0b1220; --bg-2: #111a2e; --card: #1a2438;
+      --ink: #f1f5f9; --ink-soft: #94a3b8; --ink-fade: #64748b;
+      --accent: #5eead4; --accent-2: #2dd4bf; --accent-soft: #134e4a;
+      --warm: #fbbf24; --warm-soft: #451a03;
+      --coral: #fb7185; --coral-soft: #4c0519;
+      --purple: #a78bfa; --purple-soft: #2e1065;
       --border: #263349;
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-      --shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.2);
-      --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.4), 0 20px 60px rgba(0, 0, 0, 0.3);
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.3);
+      --shadow: 0 1px 3px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.2);
+      --shadow-lg: 0 4px 20px rgba(0,0,0,.4), 0 20px 60px rgba(0,0,0,.3);
     }
   }
-
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    line-height: 1.5;
-    font-size: 16px;
+    background: var(--bg); color: var(--ink); line-height: 1.5; font-size: 16px;
     padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     min-height: 100vh;
-    background-image:
-      radial-gradient(at 5% 0%, rgba(15, 118, 110, 0.06) 0px, transparent 50%),
-      radial-gradient(at 95% 20%, rgba(217, 119, 6, 0.04) 0px, transparent 50%);
+    background-image: radial-gradient(at 5% 0%, rgba(15,118,110,.06) 0, transparent 50%), radial-gradient(at 95% 20%, rgba(217,119,6,.04) 0, transparent 50%);
   }
   @media (prefers-color-scheme: dark) {
-    body {
-      background-image:
-        radial-gradient(at 5% 0%, rgba(94, 234, 212, 0.06) 0px, transparent 50%),
-        radial-gradient(at 95% 20%, rgba(251, 191, 36, 0.04) 0px, transparent 50%);
-    }
+    body { background-image: radial-gradient(at 5% 0%, rgba(94,234,212,.06) 0, transparent 50%), radial-gradient(at 95% 20%, rgba(251,191,36,.04) 0, transparent 50%); }
   }
-
   .wrap { max-width: 720px; margin: 0 auto; padding: 16px 16px 60px; }
-
-  /* HERO */
   .hero {
     background: linear-gradient(135deg, #0f766e 0%, #14b8a6 60%, #0891b2 100%);
-    color: white;
-    padding: 20px 20px 18px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-    box-shadow: var(--shadow-lg);
-    position: relative;
-    overflow: hidden;
+    color: white; padding: 20px 20px 18px; border-radius: 20px;
+    margin-bottom: 12px; box-shadow: var(--shadow-lg);
+    position: relative; overflow: hidden;
   }
-  .hero::before {
-    content: "✈";
-    position: absolute;
-    right: -20px;
-    top: -30px;
-    font-size: 140px;
-    opacity: 0.09;
-    transform: rotate(-15deg);
-    line-height: 1;
-    pointer-events: none;
-  }
-  .hero-eyebrow {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.9;
-    margin-bottom: 4px;
-    font-weight: 600;
-    position: relative;
-  }
-  .hero h1 {
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 1.15;
-    margin-bottom: 10px;
-    letter-spacing: -0.5px;
-    position: relative;
-  }
-  .hero-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    position: relative;
-    flex-wrap: wrap;
-  }
+  .hero::before { content: "✈"; position: absolute; right: -20px; top: -30px; font-size: 140px; opacity: 0.09; transform: rotate(-15deg); line-height: 1; pointer-events: none; }
+  .hero-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; margin-bottom: 4px; font-weight: 600; position: relative; }
+  .hero h1 { font-size: 22px; font-weight: 800; line-height: 1.15; margin-bottom: 10px; letter-spacing: -0.5px; position: relative; }
+  .hero-meta { display: flex; align-items: center; gap: 8px; font-size: 13px; position: relative; flex-wrap: wrap; }
   .hero-chip {
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(8px);
-    padding: 5px 12px;
-    border-radius: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 600;
-    font-size: 12px;
-    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,.2); backdrop-filter: blur(8px);
+    padding: 5px 12px; border-radius: 20px;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-weight: 600; font-size: 12px; border: 1px solid rgba(255,255,255,.15);
   }
   .hero-chip .num { font-size: 15px; font-weight: 800; }
-
-  /* TAB BAR */
   .tabs {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    display: flex;
-    gap: 4px;
-    padding: 8px;
-    border-radius: 14px;
-    margin: 0 -4px 16px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    position: sticky; top: 0; z-index: 50;
+    display: flex; gap: 4px; padding: 8px;
+    border-radius: 14px; margin: 0 -4px 16px;
+    box-shadow: var(--shadow); border: 1px solid var(--border);
+    overflow-x: auto; scrollbar-width: none;
     backdrop-filter: blur(10px);
     background: color-mix(in srgb, var(--card) 92%, transparent);
   }
   .tabs::-webkit-scrollbar { display: none; }
   .tab {
-    flex: 1 1 auto;
-    background: transparent;
-    border: none;
-    color: var(--ink-soft);
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 10px 6px 9px;
-    border-radius: 10px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    transition: all 0.15s ease;
-    min-width: 68px;
-    white-space: nowrap;
+    flex: 1 1 auto; background: transparent; border: none;
+    color: var(--ink-soft); font-family: inherit;
+    font-size: 12px; font-weight: 600; padding: 10px 6px 9px;
+    border-radius: 10px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    transition: all 0.15s ease; min-width: 68px; white-space: nowrap;
   }
   .tab-icon { font-size: 20px; line-height: 1; }
   .tab-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; }
   .tab:hover { color: var(--ink); background: var(--bg-2); }
   .tab.active {
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(15, 118, 110, 0.3);
+    color: white; box-shadow: 0 2px 8px rgba(15,118,110,.3);
   }
   .tab.active .tab-label { color: white; }
-
-  /* PANELS */
   .panel { animation: fadeIn 0.25s ease; }
   .panel[hidden] { display: none; }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* SUMMARY TILES */
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
   .summary {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 8px; margin-bottom: 20px;
   }
-  .tile {
-    background: var(--card);
-    border-radius: 14px;
-    padding: 14px 6px;
-    text-align: center;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border);
-  }
+  .tile { background: var(--card); border-radius: 14px; padding: 14px 6px; text-align: center; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
   .tile-icon { font-size: 18px; margin-bottom: 4px; }
-  .tile-num {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--accent);
-    line-height: 1;
-    letter-spacing: -0.5px;
-  }
-  .tile-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--ink-soft);
-    margin-top: 4px;
-    font-weight: 600;
-  }
-
-  /* SECTION HEADERS */
-  .section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 26px 0 12px 2px;
-  }
-  .section-title {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--ink-soft);
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-count {
-    font-size: 12px;
-    color: var(--ink-fade);
-    font-weight: 500;
-    background: var(--card);
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-  }
-
-  /* MAP */
-  .map-card {
-    background: var(--card);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    margin-bottom: 12px;
-  }
+  .tile-num { font-size: 22px; font-weight: 800; color: var(--accent); line-height: 1; letter-spacing: -0.5px; }
+  .tile-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--ink-soft); margin-top: 4px; font-weight: 600; }
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin: 26px 0 12px 2px; }
+  .section-title { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--ink-soft); font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .section-count { font-size: 12px; color: var(--ink-fade); font-weight: 500; background: var(--card); padding: 3px 10px; border-radius: 20px; border: 1px solid var(--border); }
+  .map-card { background: var(--card); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 12px; }
   #map { height: 340px; width: 100%; background: var(--bg-2); z-index: 1; }
-  .map-legend {
-    padding: 12px 16px;
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    font-size: 11px;
-    border-top: 1px solid var(--border);
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--ink-soft);
-  }
+  .map-legend { padding: 12px 16px; display: flex; gap: 14px; flex-wrap: wrap; font-size: 11px; border-top: 1px solid var(--border); }
+  .legend-item { display: flex; align-items: center; gap: 5px; color: var(--ink-soft); }
   .leaflet-container { font-family: inherit !important; background: var(--bg-2) !important; }
   .city-pin { background: transparent; border: none; }
   .city-pin-inner {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: var(--accent);
-    border: 2.5px solid white;
-    box-shadow: 0 2px 6px rgba(15, 118, 110, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 800;
-    font-size: 10px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--accent); border: 2.5px solid white;
+    box-shadow: 0 2px 6px rgba(15,118,110,.5);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 800; font-size: 10px;
     transform: translate(-50%, -50%);
   }
-  .city-pin-inner.past { background: var(--ink-fade); box-shadow: 0 2px 6px rgba(148, 163, 184, 0.4); }
-  .leaflet-popup-content-wrapper {
-    background: var(--card) !important;
-    color: var(--ink) !important;
-    border-radius: 12px !important;
-    box-shadow: var(--shadow) !important;
-  }
+  .leaflet-popup-content-wrapper { background: var(--card) !important; color: var(--ink) !important; border-radius: 12px !important; box-shadow: var(--shadow) !important; }
   .leaflet-popup-tip { background: var(--card) !important; }
   .leaflet-popup-content { margin: 12px 14px !important; font-size: 13px !important; }
   .popup-title { font-weight: 700; font-size: 15px; margin-bottom: 2px; }
   .popup-sub { color: var(--ink-soft); font-size: 12px; }
-
-  /* NEXT-UP */
-  .next-up {
-    background: linear-gradient(135deg, var(--warm-soft) 0%, var(--card) 100%);
-    border: 1px solid var(--warm);
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .next-up { background: linear-gradient(135deg, var(--warm-soft) 0%, var(--card) 100%); border: 1px solid var(--warm); border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
   .next-up-icon { font-size: 26px; line-height: 1; flex-shrink: 0; }
   .next-up-body { flex: 1; min-width: 0; }
-  .next-up-eyebrow {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--warm);
-    font-weight: 700;
-  }
-  .next-up-title {
-    font-size: 14px;
-    color: var(--ink);
-    font-weight: 700;
-    margin-top: 2px;
-  }
-  .next-up-detail {
-    font-size: 12px;
-    color: var(--ink-soft);
-    margin-top: 2px;
-  }
-
-  /* ITINERARY — leg cards */
-  .leg-card {
-    background: var(--card);
-    border-radius: 18px;
-    padding: 18px 20px;
-    margin-bottom: 12px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  .leg-card.past { opacity: 0.85; }
-  .leg-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
-  }
+  .next-up-eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--warm); font-weight: 700; }
+  .next-up-title { font-size: 14px; color: var(--ink); font-weight: 700; margin-top: 2px; }
+  .next-up-detail { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+  .leg-card { background: var(--card); border-radius: 18px; padding: 18px 20px; margin-bottom: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .leg-card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%); }
   .leg-card.gap::before { background: var(--ink-fade); }
   .leg-card.gap { border-style: dashed; background: transparent; }
-
-  .leg-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .leg-emoji {
-    font-size: 32px;
-    line-height: 1;
-    flex-shrink: 0;
-  }
+  .leg-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .leg-emoji { font-size: 32px; line-height: 1; flex-shrink: 0; }
   .leg-header-info { flex: 1; min-width: 0; }
-  .leg-name {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--ink);
-    letter-spacing: -0.4px;
-    line-height: 1.15;
-  }
-  .leg-dates {
-    font-size: 12px;
-    color: var(--ink-soft);
-    margin-top: 3px;
-    font-weight: 500;
-  }
-  .leg-nights {
-    display: inline-block;
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 20px;
-    letter-spacing: 0.3px;
-    margin-left: 6px;
-    vertical-align: middle;
-  }
+  .leg-name { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.4px; line-height: 1.15; }
+  .leg-dates { font-size: 12px; color: var(--ink-soft); margin-top: 3px; font-weight: 500; }
+  .leg-nights { display: inline-block; background: var(--accent-soft); color: var(--accent); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; margin-left: 6px; vertical-align: middle; }
   .leg-nights.gap { background: var(--bg-2); color: var(--ink-soft); }
-
-  .leg-body {
-    font-size: 13px;
-    color: var(--ink-soft);
-    line-height: 1.55;
-  }
+  .leg-body { font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
   .leg-body strong { color: var(--ink); font-weight: 600; }
-
-  .leg-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 10px;
-  }
-  .leg-tag {
-    background: var(--bg-2);
-    color: var(--ink-soft);
-    font-size: 11px;
-    padding: 4px 9px;
-    border-radius: 20px;
-    font-weight: 500;
-  }
-  .leg-tag.person {
-    background: var(--purple-soft);
-    color: var(--purple);
-  }
-  .leg-tag.activity {
-    background: var(--accent-soft);
-    color: var(--accent);
-  }
-
-  .leg-bookings {
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px dashed var(--border);
-  }
-  .booking-mini {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--ink);
-    padding: 5px 0;
-  }
-  .booking-mini-icon {
-    width: 22px;
-    height: 22px;
-    border-radius: 6px;
-    background: var(--accent-soft);
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    flex-shrink: 0;
-  }
+  .leg-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .leg-tag { background: var(--bg-2); color: var(--ink-soft); font-size: 11px; padding: 4px 9px; border-radius: 20px; font-weight: 500; }
+  .leg-tag.person { background: var(--purple-soft); color: var(--purple); }
+  .leg-tag.activity { background: var(--accent-soft); color: var(--accent); }
+  .leg-bookings { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border); }
+  .booking-mini { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink); padding: 5px 0; }
+  .booking-mini-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
   .booking-mini-icon.hotel { background: var(--purple-soft); color: var(--purple); }
   .booking-mini-icon.car { background: var(--warm-soft); color: var(--warm); }
-  .booking-mini-pnr {
-    margin-left: auto;
-    font-family: "SF Mono", Menlo, Monaco, monospace;
-    font-size: 10px;
-    color: var(--ink-fade);
-    cursor: pointer;
-    user-select: all;
-    padding: 2px 6px;
-    background: var(--bg-2);
-    border-radius: 4px;
-  }
-  .booking-mini-pnr:active { transform: scale(0.95); }
-
-  .leg-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    padding: 3px 9px;
-    border-radius: 20px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-  }
+  .leg-status { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase; }
   .leg-status.now { background: #dcfce7; color: #15803d; }
   .leg-status.booked { background: var(--accent-soft); color: var(--accent); }
   .leg-status.planned { background: var(--warm-soft); color: var(--warm); }
   .leg-status.gap { background: var(--coral-soft); color: var(--coral); }
-  .leg-status.past { background: var(--bg-2); color: var(--ink-fade); }
-  @media (prefers-color-scheme: dark) {
-    .leg-status.now { background: #14532d; color: #86efac; }
-  }
-
-  /* BOOKING CARDS (for detailed view) */
-  .booking-card {
-    background: var(--card);
-    border-radius: 18px;
-    padding: 18px;
-    margin-bottom: 12px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  .booking-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
-  }
+  @media (prefers-color-scheme: dark) { .leg-status.now { background: #14532d; color: #86efac; } }
+  .booking-card { background: var(--card); border-radius: 18px; padding: 18px; margin-bottom: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .booking-card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%); }
   .booking-card.hotel::before { background: var(--purple); }
   .booking-card.car::before { background: var(--warm); }
-  .booking-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-    gap: 10px;
-  }
-  .booking-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-size: 11px;
-    font-weight: 700;
-    padding: 5px 11px;
-    border-radius: 20px;
-  }
+  .booking-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; gap: 10px; }
+  .booking-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-soft); color: var(--accent); font-size: 11px; font-weight: 700; padding: 5px 11px; border-radius: 20px; }
   .booking-card.hotel .booking-badge { background: var(--purple-soft); color: var(--purple); }
   .booking-card.car .booking-badge { background: var(--warm-soft); color: var(--warm); }
-  .booking-airline {
-    font-size: 10px;
-    color: var(--ink-fade);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .booking-route {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 14px;
-  }
+  .booking-airline { font-size: 10px; color: var(--ink-fade); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .booking-route { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 14px; }
   .booking-endpoint { flex: 1; min-width: 0; }
-  .endpoint-code {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--ink);
-    letter-spacing: -1px;
-    line-height: 1;
-  }
+  .endpoint-code { font-size: 28px; font-weight: 800; color: var(--ink); letter-spacing: -1px; line-height: 1; }
   .endpoint-code.smaller { font-size: 18px; }
   .endpoint-city { font-size: 12px; color: var(--ink-soft); margin-top: 5px; }
-  .endpoint-time {
-    font-size: 16px;
-    color: var(--ink);
-    font-weight: 700;
-    margin-top: 8px;
-  }
-  .booking-path {
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    padding: 0 8px;
-    min-width: 70px;
-  }
-  .path-line {
-    width: 100%;
-    height: 2px;
-    background: repeating-linear-gradient(90deg, var(--accent) 0 6px, transparent 6px 10px);
-    position: relative;
-  }
-  .path-line::after {
-    content: "✈";
-    position: absolute;
-    right: -4px;
-    top: -10px;
-    color: var(--accent);
-    font-size: 14px;
-  }
-  .booking-card.hotel .path-line {
-    background: repeating-linear-gradient(90deg, var(--purple) 0 6px, transparent 6px 10px);
-  }
+  .endpoint-time { font-size: 16px; color: var(--ink); font-weight: 700; margin-top: 8px; }
+  .booking-path { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 0 8px; min-width: 70px; }
+  .path-line { width: 100%; height: 2px; background: repeating-linear-gradient(90deg, var(--accent) 0 6px, transparent 6px 10px); position: relative; }
+  .path-line::after { content: "✈"; position: absolute; right: -4px; top: -10px; color: var(--accent); font-size: 14px; }
+  .booking-card.hotel .path-line { background: repeating-linear-gradient(90deg, var(--purple) 0 6px, transparent 6px 10px); }
   .booking-card.hotel .path-line::after { content: "🏨"; color: var(--purple); font-size: 12px; }
-  .booking-card.car .path-line {
-    background: repeating-linear-gradient(90deg, var(--warm) 0 6px, transparent 6px 10px);
-  }
+  .booking-card.car .path-line { background: repeating-linear-gradient(90deg, var(--warm) 0 6px, transparent 6px 10px); }
   .booking-card.car .path-line::after { content: "🚗"; color: var(--warm); font-size: 12px; }
   .path-duration { font-size: 11px; color: var(--ink-soft); font-weight: 500; }
   .booking-endpoint.right { text-align: right; }
-
-  .booking-meta {
-    display: flex;
-    gap: 6px;
-    padding: 10px 12px;
-    background: var(--bg-2);
-    border-radius: 10px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-    font-size: 12px;
-    align-items: center;
-  }
+  .booking-meta { display: flex; gap: 6px; padding: 10px 12px; background: var(--bg-2); border-radius: 10px; margin-bottom: 12px; flex-wrap: wrap; font-size: 12px; align-items: center; }
   .meta-chip { color: var(--ink-soft); }
   .meta-chip strong { color: var(--ink); font-weight: 700; }
   .meta-sep { color: var(--ink-fade); }
-
-  .pnr-row {
-    border-top: 1px dashed var(--border);
-    padding-top: 12px;
-    margin-top: 12px;
-  }
+  .pnr-row { border-top: 1px dashed var(--border); padding-top: 12px; margin-top: 12px; }
   .pnr-row:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
-  .pnr-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 6px;
-    flex-wrap: wrap;
-  }
-  .pnr-code {
-    background: var(--warm-soft);
-    color: var(--warm);
-    font-family: "SF Mono", Menlo, Monaco, "Courier New", monospace;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 8px;
-    letter-spacing: 1.3px;
-    cursor: pointer;
-    user-select: all;
-    border: 1px solid rgba(217, 119, 6, 0.2);
-  }
-  .pnr-code:active { transform: scale(0.95); }
-  .pnr-label {
-    font-size: 10px;
-    color: var(--ink-soft);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .pnr-pax {
-    font-size: 14px;
-    color: var(--ink);
-    margin-bottom: 3px;
-    font-weight: 500;
-  }
+  .pnr-pax { font-size: 14px; color: var(--ink); margin-bottom: 3px; font-weight: 500; }
   .pnr-detail { font-size: 12px; color: var(--ink-soft); }
-
-  /* ROSTER */
-  .roster {
-    background: var(--card);
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    margin-bottom: 12px;
-  }
-  .roster-row {
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .roster { background: var(--card); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 12px; }
+  .roster-row { padding: 14px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
   .roster-row:last-child { border-bottom: none; }
-  .roster-avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 14px;
-    flex-shrink: 0;
-    border: 2px solid var(--card);
-    box-shadow: 0 0 0 1px var(--border);
-    letter-spacing: -0.5px;
-  }
+  .roster-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; border: 2px solid var(--card); box-shadow: 0 0 0 1px var(--border); letter-spacing: -0.5px; }
   .roster-info { flex: 1; min-width: 0; }
   .roster-name { font-weight: 600; font-size: 15px; color: var(--ink); }
   .roster-role { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
-  .roster-pnrs {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    font-family: "SF Mono", Menlo, Monaco, monospace;
-    font-size: 10px;
-    color: var(--ink-fade);
-    text-align: right;
-  }
-
-  /* NOTES */
-  .note-card {
-    background: var(--card);
-    border-left: 4px solid var(--warm);
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin-bottom: 10px;
-    box-shadow: var(--shadow-sm);
-  }
-  .note-title {
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--ink);
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+  .note-card { background: var(--card); border-left: 4px solid var(--warm); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; box-shadow: var(--shadow-sm); }
+  .note-title { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
   .note-body { font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
-
-  /* CITY HERO (for family tab) */
-  .city-hero {
-    background: linear-gradient(135deg, var(--card) 0%, var(--bg-2) 100%);
-    border-radius: 18px;
-    padding: 20px 22px;
-    margin-bottom: 16px;
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
+  .city-hero { background: linear-gradient(135deg, var(--card) 0%, var(--bg-2) 100%); border-radius: 18px; padding: 20px 22px; margin-bottom: 16px; border: 1px solid var(--border); display: flex; align-items: center; gap: 16px; }
   .city-hero-emoji { font-size: 44px; line-height: 1; flex-shrink: 0; }
   .city-hero-info { flex: 1; min-width: 0; }
-  .city-hero-name {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--ink);
-    letter-spacing: -0.5px;
-    line-height: 1.1;
-  }
-  .city-hero-dates {
-    font-size: 13px;
-    color: var(--ink-soft);
-    margin-top: 4px;
-    font-weight: 500;
-  }
-  .city-hero-badge {
-    display: inline-block;
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 20px;
-    margin-top: 6px;
-  }
-
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 32px 12px 12px;
-    color: var(--ink-soft);
-    font-size: 12px;
-  }
-  footer .updated {
-    display: inline-block;
-    background: var(--card);
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    margin-bottom: 8px;
-  }
-
-  /* TOAST */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: var(--ink);
-    color: var(--bg);
-    padding: 12px 22px;
-    border-radius: 30px;
-    font-size: 14px;
-    font-weight: 600;
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
-    z-index: 1000;
-    box-shadow: var(--shadow-lg);
-  }
-  .toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-
+  .city-hero-name { font-size: 24px; font-weight: 800; color: var(--ink); letter-spacing: -0.5px; line-height: 1.1; }
+  .city-hero-dates { font-size: 13px; color: var(--ink-soft); margin-top: 4px; font-weight: 500; }
+  footer { text-align: center; padding: 32px 12px 12px; color: var(--ink-soft); font-size: 12px; }
+  footer .updated { display: inline-block; background: var(--card); padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); margin-bottom: 8px; }
   @media (max-width: 380px) {
     .endpoint-code { font-size: 22px; }
     .hero h1 { font-size: 18px; }
@@ -811,688 +223,446 @@
 
 <div class="wrap">
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-eyebrow">The Desai Family</div>
-    <h1>USA Trip 2026</h1>
-    <div class="hero-meta">
-      <span class="hero-chip">🏡 Currently in Voorhees, NJ</span>
-      <span class="hero-chip"><span class="num" id="countdown">–</span> days until DC trip</span>
-      <span class="hero-chip">👨‍👩‍👧 6 travelers</span>
-    </div>
-  </header>
+<header class="hero">
+  <div class="hero-eyebrow">The Desai Family</div>
+  <h1>USA Trip 2026</h1>
+  <div class="hero-meta">
+    <span class="hero-chip">🏡 Currently in Voorhees, NJ</span>
+    <span class="hero-chip"><span class="num" id="countdown">–</span> days until DC trip</span>
+    <span class="hero-chip">👨‍👩‍👧 6 travelers</span>
+  </div>
+</header>
 
-  <!-- TABS -->
-  <nav class="tabs" role="tablist">
-    <button class="tab active" data-tab="overview" role="tab">
-      <span class="tab-icon">📍</span>
-      <span class="tab-label">Overview</span>
-    </button>
-    <button class="tab" data-tab="itinerary" role="tab">
-      <span class="tab-icon">🗓️</span>
-      <span class="tab-label">Itinerary</span>
-    </button>
-    <button class="tab" data-tab="bookings" role="tab">
-      <span class="tab-icon">📋</span>
-      <span class="tab-label">Bookings</span>
-    </button>
-    <button class="tab" data-tab="family" role="tab">
-      <span class="tab-icon">👥</span>
-      <span class="tab-label">Family</span>
-    </button>
-  </nav>
+<nav class="tabs" role="tablist">
+  <button class="tab active" data-tab="overview"><span class="tab-icon">📍</span><span class="tab-label">Overview</span></button>
+  <button class="tab" data-tab="itinerary"><span class="tab-icon">🗓️</span><span class="tab-label">Itinerary</span></button>
+  <button class="tab" data-tab="bookings"><span class="tab-icon">📋</span><span class="tab-label">Bookings</span></button>
+  <button class="tab" data-tab="family"><span class="tab-icon">👥</span><span class="tab-label">Family</span></button>
+</nav>
 
-  <!-- ============= OVERVIEW ============= -->
-  <section class="panel" data-panel="overview">
+<!-- OVERVIEW -->
+<section class="panel" data-panel="overview">
+  <div class="next-up">
+    <div class="next-up-icon">🚙</div>
+    <div class="next-up-body">
+      <div class="next-up-eyebrow">Next up · Sun Jul 19 → Wed Jul 22</div>
+      <div class="next-up-title">DC trip · Capitol Tour Mon 11:20 AM</div>
+      <div class="next-up-detail">Drive from Voorhees Sunday · 4 days in DC · Richmond starts Jul 25</div>
+    </div>
+  </div>
 
-    <div class="next-up">
-      <div class="next-up-icon">🚙</div>
-      <div class="next-up-body">
-        <div class="next-up-eyebrow">Next up · Sun Jul 19 → Wed Jul 22</div>
-        <div class="next-up-title">DC trip · Capitol Tour Mon 11:20 AM</div>
-        <div class="next-up-detail">Drive from Voorhees Sunday · 4 days in DC · Richmond starts Jul 25</div>
-      </div>
-    </div>
+  <div class="summary">
+    <div class="tile"><div class="tile-icon">📍</div><div class="tile-num">22</div><div class="tile-label">Stops</div></div>
+    <div class="tile"><div class="tile-icon">✈️</div><div class="tile-num">9</div><div class="tile-label">Flights</div></div>
+    <div class="tile"><div class="tile-icon">🏨</div><div class="tile-num">5</div><div class="tile-label">Stays</div></div>
+    <div class="tile"><div class="tile-icon">🚗</div><div class="tile-num">1</div><div class="tile-label">Rentals</div></div>
+  </div>
 
-    <div class="summary">
-      <div class="tile">
-        <div class="tile-icon">📍</div>
-        <div class="tile-num">16</div>
-        <div class="tile-label">Stops</div>
-      </div>
-      <div class="tile">
-        <div class="tile-icon">✈️</div>
-        <div class="tile-num">7</div>
-        <div class="tile-label">Flights</div>
-      </div>
-      <div class="tile">
-        <div class="tile-icon">🏨</div>
-        <div class="tile-num">2</div>
-        <div class="tile-label">Stays</div>
-      </div>
-      <div class="tile">
-        <div class="tile-icon">🚗</div>
-        <div class="tile-num">1</div>
-        <div class="tile-label">Rentals</div>
-      </div>
+  <div class="section-header">
+    <div class="section-title">🗺️ Coast to Coast</div>
+    <div class="section-count">22 stops</div>
+  </div>
+  <div class="map-card">
+    <div id="map"></div>
+    <div class="map-legend">
+      <div class="legend-item">🟢 All planned stops · Zoom & tap pins for details</div>
     </div>
+  </div>
 
-    <div class="section-header">
-      <div class="section-title">🗺️ Full Route Across the US</div>
-      <div class="section-count">Coast to coast</div>
-    </div>
-    <div class="map-card">
-      <div id="map"></div>
-      <div class="map-legend">
-        <div class="legend-item">🟢 All planned stops · Zoom & tap pins for details</div>
-      </div>
-    </div>
+  <div class="section-header"><div class="section-title">🛣️ West Coast Drive Totals</div><div class="section-count">Sep 1 → Sep 17</div></div>
+  <div class="note-card" style="border-left-color: var(--accent); background: linear-gradient(90deg, var(--accent-soft) 0%, var(--card) 60%);">
+    <div class="note-title">🚗 ~1,980 miles · ~32 hours behind the wheel</div>
+    <div class="note-body">Across 9 driving days: Sacramento → Santa Rosa → SF → LA → Grand Canyon → Page → Monument Valley → Moab → Bryce → Vegas. Longest single leg: LA → Grand Canyon (8h 19m). With a 2y old, expect real breaks.</div>
+  </div>
 
-    <div class="section-header">
-      <div class="section-title">⚠️ Things to Sort Out</div>
-    </div>
-    <div class="note-card">
-      <div class="note-title">❓ Sep 20–24 gap after Grand Canyon</div>
-      <div class="note-body">Where after Grand Canyon before Vermont on Sep 24? A stop in between, or fly home first?</div>
-    </div>
-    <div class="note-card">
-      <div class="note-title">👶 Car seat for Radhika (Georgia + long drives)</div>
-      <div class="note-body">Georgia requires kids under 4 in a car seat. Later legs (SF→LA→LV drives) will need one too.</div>
-    </div>
-    <div class="note-card">
-      <div class="note-title">🎒 Add bags to Frontier PNRs</div>
-      <div class="note-body">Only Rajendra has bags. Add via frontier.com — cheapest at booking.</div>
-    </div>
-    <div class="note-card">
-      <div class="note-title">🛬 Harin's onward flight from ATL</div>
-      <div class="note-body">Not booked on Aug 7 ATL→IND leg. Decide plan.</div>
-    </div>
-    <div class="note-card">
-      <div class="note-title">🏨 Grand Canyon lodging books up months ahead</div>
-      <div class="note-body">7 nights (Sep 13–20) needs planning. In-park lodges (Bright Angel, El Tovar) sell out. Alternatives: Tusayan (just outside), Flagstaff, Williams.</div>
-    </div>
-  </section>
+  <div class="section-header"><div class="section-title">⚠️ Things to Sort Out</div></div>
+  <div class="note-card"><div class="note-title">🚗 Rental car for the western loop</div><div class="note-body">SF pickup → Vegas return covers 1,980 mi over ~16 days. Book with a one-way return option to LAS soon.</div></div>
+  <div class="note-card"><div class="note-title">🏨 Grand Canyon South Rim lodging books up</div><div class="note-body">Sep 9–11 · in-park lodges (Bright Angel, El Tovar, Yavapai) sell out 6-12 months out. Backup: Tusayan (walking distance), Flagstaff, Williams.</div></div>
+  <div class="note-card"><div class="note-title">🌙 Late arrival home Sep 19</div><div class="note-body">Land EWR 9:31 PM · get home to Voorhees ~11 PM with a 2y old. Pre-book rideshare or plan for someone to drive.</div></div>
+  <div class="note-card"><div class="note-title">🏨 Stays still to book</div><div class="note-body">Richmond · Indianapolis · Chicago · LA · Grand Canyon · Monument Valley · Bryce · Vegas · Vermont/Boston.</div></div>
+  <div class="note-card"><div class="note-title">👶 Car seat for Radhika (long drives ahead)</div><div class="note-body">SF→LA→Vegas drives will need one. Rental companies rent them daily.</div></div>
+  <div class="note-card"><div class="note-title">🎒 Add bags to Frontier PNRs</div><div class="note-body">Only Rajendra has bags. Add via frontier.com — cheapest at booking.</div></div>
+</section>
 
-  <!-- ============= ITINERARY ============= -->
-  <section class="panel" data-panel="itinerary" hidden>
+<!-- ITINERARY -->
+<section class="panel" data-panel="itinerary" hidden>
+  <div class="section-header">
+    <div class="section-title">🗓️ Full Trip · Chronological</div>
+    <div class="section-count">17 stops</div>
+  </div>
 
-    <div class="section-header">
-      <div class="section-title">🗓️ Full Trip · Chronological</div>
-      <div class="section-count">16 stops</div>
-    </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🏡</div><div class="leg-header-info"><div class="leg-name">Voorhees, NJ <span class="leg-nights">Currently here</span></div><div class="leg-dates">Until Sun Jul 19</div></div></div>
+    <div class="leg-body">Family base in South Jersey. Heading to DC on Sunday.</div>
+    <div class="leg-tags"><span class="leg-status now">Now</span></div>
+  </div>
 
-    <!-- Currently: Voorhees -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🏡</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Voorhees, NJ <span class="leg-nights">Currently here</span></div>
-          <div class="leg-dates">Until Sun Jul 19</div>
-        </div>
-      </div>
-      <div class="leg-body">Family base in South Jersey. Heading to DC on Sunday for a few days.</div>
-      <div class="leg-tags">
-        <span class="leg-status now">Now</span>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🏛️</div><div class="leg-header-info"><div class="leg-name">Washington, DC <span class="leg-nights">4 days</span></div><div class="leg-dates">Sun Jul 19 – Wed Jul 22</div></div></div>
+    <div class="leg-body">Short DC trip built around the Capitol tour on Monday.</div>
+    <div class="leg-tags">
+      <span class="leg-tag activity">🏛️ US Capitol Tour · Mon Jul 20 · 11:20 AM</span>
+      <span class="leg-tag person">👋 +2 local family joining tour</span>
+      <span class="leg-status booked">Tour booked</span>
     </div>
+    <div class="leg-bookings"><div class="booking-mini"><span class="booking-mini-icon">🎟️</span><span>US Capitol Tour · 11:20 AM · 8 passes (6 travelers + 2 local family)</span></div></div>
+  </div>
 
-    <!-- Weekend DC trip -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🏛️</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Washington, DC <span class="leg-nights">4 days</span></div>
-          <div class="leg-dates">Sun Jul 19 – Wed Jul 22 · Weekend trip from Voorhees</div>
-        </div>
-      </div>
-      <div class="leg-body">Short DC trip built around the Capitol tour on Monday.</div>
-      <div class="leg-tags">
-        <span class="leg-tag activity">🏛️ US Capitol Tour · Mon Jul 20 · 11:20 AM</span>
-        <span class="leg-tag person">👋 +2 local family joining tour</span>
-        <span class="leg-status booked">Tour booked</span>
-      </div>
-      <div class="leg-bookings">
-        <div class="booking-mini">
-          <span class="booking-mini-icon">🎟️</span>
-          <span>US Capitol Tour · 11:20 AM · 8 passes (6 travelers + 2 local family)</span>
-        </div>
-      </div>
-    </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🏛️</div><div class="leg-header-info"><div class="leg-name">Richmond, VA <span class="leg-nights">~10 nights</span></div><div class="leg-dates">Jul 25 – Aug 5 · Route from DC not yet decided</div></div></div>
+    <div class="leg-body">First main stop of the travel loop. May go directly from DC → Richmond, or return to Voorhees first.</div>
+    <div class="leg-tags"><span class="leg-tag">📋 Details TBD</span><span class="leg-tag">🔀 DC → Richmond direct? TBD</span><span class="leg-status planned">Planned</span></div>
+  </div>
 
-    <!-- Leg 1: Richmond -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🏛️</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Richmond, VA <span class="leg-nights">~10 nights</span></div>
-          <div class="leg-dates">Jul 25 – Aug 5 · Route from DC not yet decided</div>
-        </div>
-      </div>
-      <div class="leg-body">First main stop of the travel loop. May go directly from DC → Richmond, or return to Voorhees first.</div>
-      <div class="leg-tags">
-        <span class="leg-tag">📋 Details TBD</span>
-        <span class="leg-tag">🔀 DC → Richmond direct? TBD</span>
-        <span class="leg-status planned">Planned</span>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🍑</div><div class="leg-header-info"><div class="leg-name">Atlanta, GA <span class="leg-nights">2 nights</span></div><div class="leg-dates">Aug 5 – Aug 7 · Perimeter Center</div></div></div>
+    <div class="leg-body">Meeting family and doing the Atlanta classics.</div>
+    <div class="leg-tags">
+      <span class="leg-tag person">👋 Zeel & Nikhil</span>
+      <span class="leg-tag activity">🥤 Coca-Cola factory</span>
+      <span class="leg-tag activity">🐠 Georgia Aquarium</span>
+      <span class="leg-status booked">Fully booked</span>
     </div>
+    <div class="leg-bookings">
+      <div class="booking-mini"><span class="booking-mini-icon">✈️</span><span>Frontier F9 4707 · IAD → ATL · 7:48 AM (6 travelers)</span></div>
+      <div class="booking-mini"><span class="booking-mini-icon hotel">🏨</span><span>Aloft Perimeter · 1 King · 2 guests</span></div>
+      <div class="booking-mini"><span class="booking-mini-icon car">🚗</span><span>Hertz Kia Carnival · 2 days</span></div>
+      <div class="booking-mini"><span class="booking-mini-icon hotel">🏡</span><span>Rest of family at relatives' (4 min walk)</span></div>
+    </div>
+  </div>
 
-    <!-- Leg 2: Atlanta -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🍑</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Atlanta, GA <span class="leg-nights">2 nights</span></div>
-          <div class="leg-dates">Aug 5 – Aug 7 · Perimeter Center</div>
-        </div>
-      </div>
-      <div class="leg-body">Meeting family and doing the Atlanta classics.</div>
-      <div class="leg-tags">
-        <span class="leg-tag person">👋 Zeel & Nikhil</span>
-        <span class="leg-tag activity">🥤 Coca-Cola factory</span>
-        <span class="leg-tag activity">🐠 Georgia Aquarium</span>
-        <span class="leg-status booked">Fully booked</span>
-      </div>
-      <div class="leg-bookings">
-        <div class="booking-mini">
-          <span class="booking-mini-icon">✈️</span>
-          <span>Frontier F9 4707 · IAD → ATL · 7:48 AM (5 travelers)</span>
-        </div>
-        <div class="booking-mini">
-          <span class="booking-mini-icon">✈️</span>
-          <span>Frontier F9 4707 · Rajendra</span>
-        </div>
-        <div class="booking-mini">
-          <span class="booking-mini-icon hotel">🏨</span>
-          <span>Aloft Perimeter · 1 King · 2 guests</span>
-        </div>
-        <div class="booking-mini">
-          <span class="booking-mini-icon car">🚗</span>
-          <span>Hertz Kia Carnival · 2 days</span>
-        </div>
-        <div class="booking-mini">
-          <span class="booking-mini-icon hotel">🏡</span>
-          <span>Rest of family at relatives' (4 min walk)</span>
-        </div>
-      </div>
-    </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🏁</div><div class="leg-header-info"><div class="leg-name">Indianapolis, IN <span class="leg-nights">~1 night</span></div><div class="leg-dates">Aug 7 (arrive) → drive to Chicago</div></div></div>
+    <div class="leg-body">Visit Pintu Kaka. Then drive ~3h north to Chicago.</div>
+    <div class="leg-tags"><span class="leg-tag person">👋 Pintu Kaka</span><span class="leg-status booked">Flight in booked</span></div>
+    <div class="leg-bookings"><div class="booking-mini"><span class="booking-mini-icon">✈️</span><span>Frontier F9 2497 · ATL → IND · 9:47 AM (5 travelers)</span></div></div>
+  </div>
 
-    <!-- Leg 3: Indianapolis -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🏁</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Indianapolis, IN <span class="leg-nights">~1 night</span></div>
-          <div class="leg-dates">Aug 7 (arrive) → drive to Chicago</div>
-        </div>
-      </div>
-      <div class="leg-body">Visit Pintu Kaka. Then drive ~3h north to Chicago.</div>
-      <div class="leg-tags">
-        <span class="leg-tag person">👋 Pintu Kaka</span>
-        <span class="leg-status booked">Flight in booked</span>
-      </div>
-      <div class="leg-bookings">
-        <div class="booking-mini">
-          <span class="booking-mini-icon">✈️</span>
-          <span>Frontier F9 2497 · ATL → IND · 9:47 AM (5 travelers)</span>
-        </div>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🌆</div><div class="leg-header-info"><div class="leg-name">Chicago, IL <span class="leg-nights">~1–2 nights</span></div><div class="leg-dates">Aug 8–9 · Fly out Sunday evening</div></div></div>
+    <div class="leg-body">Chicago stopover before flying back to Philadelphia (Voorhees).</div>
+    <div class="leg-tags"><span class="leg-tag activity">🌆 The Windy City</span><span class="leg-status booked">Flight out booked</span></div>
+    <div class="leg-bookings">
+      <div class="booking-mini"><span class="booking-mini-icon">✈️</span><span>Frontier F9 2112 · ORD → PHL · Sun 8:52 PM → Mon 12:15 AM</span></div>
+      <div class="booking-mini"><span class="booking-mini-icon">✈️</span><span>Rajendra (Seat 1A · 1CO + 2CK) + Rudra + Aishwariya + Ketkibahen + Radhika</span></div>
     </div>
+  </div>
 
-    <!-- Leg 3b: Chicago -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🌆</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Chicago, IL <span class="leg-nights">~1–2 nights</span></div>
-          <div class="leg-dates">Aug 8–9 · Fly out Sunday evening</div>
-        </div>
-      </div>
-      <div class="leg-body">Chicago stopover before flying back to Philadelphia (Voorhees).</div>
-      <div class="leg-tags">
-        <span class="leg-tag activity">🌆 The Windy City</span>
-        <span class="leg-status booked">Flight out booked</span>
-      </div>
-      <div class="leg-bookings">
-        <div class="booking-mini">
-          <span class="booking-mini-icon">✈️</span>
-          <span>Frontier F9 2112 · ORD → PHL · Sun 8:52 PM → Mon 12:15 AM</span>
-        </div>
-        <div class="booking-mini">
-          <span class="booking-mini-icon">✈️</span>
-          <span>Rajendra (Seat 1A · 1CO + 2CK) + Rudra + Aishwariya + Ketkibahen + Radhika</span>
-        </div>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🗽</div><div class="leg-header-info"><div class="leg-name">Montclair, NJ <span class="leg-nights">15 nights</span></div><div class="leg-dates">Aug 10 – Aug 25 · Sunita's home</div></div></div>
+    <div class="leg-body">Home base for the northeast leg. Day trips out to NYC and Niagara Falls.</div>
+    <div class="leg-tags">
+      <span class="leg-tag person">🏡 Sunita's home</span>
+      <span class="leg-tag activity">🗽 NYC</span>
+      <span class="leg-tag activity">🌉 Brooklyn</span>
+      <span class="leg-tag activity">🗽 Statue of Liberty</span>
+      <span class="leg-tag activity">🌊 Niagara Falls</span>
+      <span class="leg-status planned">Stay confirmed</span>
     </div>
+  </div>
 
-    <!-- Leg 4: Montclair -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🏡</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Montclair, NJ <span class="leg-nights">15 nights</span></div>
-          <div class="leg-dates">Aug 10 – Aug 25 · Sunita's home</div>
-        </div>
-      </div>
-      <div class="leg-body">Home base for the northeast leg. Day trips out to NYC and Niagara Falls.</div>
-      <div class="leg-tags">
-        <span class="leg-tag person">🏡 Sunita's home</span>
-        <span class="leg-tag activity">🗽 NYC</span>
-        <span class="leg-tag activity">🌉 Brooklyn</span>
-        <span class="leg-tag activity">🗽 Statue of Liberty</span>
-        <span class="leg-tag activity">🌊 Niagara Falls</span>
-        <span class="leg-status planned">Stay confirmed</span>
-      </div>
-    </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🌳</div><div class="leg-header-info"><div class="leg-name">Voorhees, NJ <span class="leg-nights">~9 nights</span></div><div class="leg-dates">Aug 25 – Sep 1 · Back home before west coast</div></div></div>
+    <div class="leg-body">South Jersey home base again. Prep for the west coast leg.</div>
+    <div class="leg-tags"><span class="leg-tag">🏡 South Jersey</span><span class="leg-status planned">Tentative</span></div>
+  </div>
 
-    <!-- Voorhees, NJ -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🌳</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Voorhees, NJ <span class="leg-nights">~9 nights</span></div>
-          <div class="leg-dates">Aug 25 – Sep 3 · Between Montclair & SF</div>
-        </div>
-      </div>
-      <div class="leg-body">South Jersey (near Philadelphia). Break between northeast base and the west coast leg.</div>
-      <div class="leg-tags">
-        <span class="leg-tag">🏡 South Jersey</span>
-        <span class="leg-status planned">Tentative</span>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🍇</div><div class="leg-header-info"><div class="leg-name">Santa Rosa, CA <span class="leg-nights">2 nights</span></div><div class="leg-dates">Sep 1 – Sep 3 · Wine country · after Sacramento landing</div></div></div>
+    <div class="leg-body">Fly into Sacramento at 12:16 PM. <strong>Drive from SMF · 1h 23m · 97 mi</strong> 🛣️ to Sonoma wine country. Airbnb hosted by Scott.</div>
+    <div class="leg-tags">
+      <span class="leg-tag activity">🍷 Sonoma wine country</span>
+      <span class="leg-tag">🏡 Airbnb (Scott)</span>
+      <span class="leg-status booked">Flight + stay booked</span>
     </div>
+    <div class="leg-bookings">
+      <div class="booking-mini"><span class="booking-mini-icon">✈️</span><span>Delta DL 2023 → DL 1423 · PHL → SLC → SMF · Tue Sep 1 · 7 passengers</span></div>
+      <div class="booking-mini"><span class="booking-mini-icon">🕓</span><span>Depart PHL 7:20 AM (Term D) · Arrive SMF 12:16 PM (Term A)</span></div>
+      <div class="booking-mini"><span class="booking-mini-icon hotel">🏠</span><span>Airbnb Santa Rosa · Hosted by Scott · Check-in Tue 3 PM · Checkout Thu 11 AM</span></div>
+    </div>
+  </div>
 
-    <!-- Leg 5: SF -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🌉</div>
-        <div class="leg-header-info">
-          <div class="leg-name">San Francisco (Daly City) <span class="leg-nights">3 nights</span></div>
-          <div class="leg-dates">Sep 3 – Sep 6 · Airbnb near Palisades Park</div>
-        </div>
-      </div>
-      <div class="leg-body">West coast leg begins. Big group Airbnb — 9 adults + toddler + newborn all staying together.</div>
-      <div class="leg-tags">
-        <span class="leg-tag person">👨‍👩‍👧 6 travelers</span>
-        <span class="leg-tag person">👋 + Hina, Kunal, Kesha, Shilpa</span>
-        <span class="leg-tag person">👶 + Kunal & Kesha's newborn</span>
-        <span class="leg-tag activity">🌊 17 Mile Drive</span>
-        <span class="leg-tag activity">🏡 Smruti's home (1 day)</span>
-        <span class="leg-status booked">Stay booked</span>
-      </div>
-      <div class="leg-bookings">
-        <div class="booking-mini">
-          <span class="booking-mini-icon hotel">🏠</span>
-          <span>Airbnb · Daly City · Hosted by Bella · 9 adults + Radhika + newborn</span>
-        </div>
-        <div class="booking-mini">
-          <span class="booking-mini-icon hotel">🕓</span>
-          <span>Check-in Thu Sep 3 (after 4 PM) · Checkout Sun Sep 6 (before 11 AM)</span>
-        </div>
-        <div class="booking-mini">
-          <span class="booking-mini-icon">👥</span>
-          <span>Adults: Harin · Rajendra · Ketki · Rudra · Aishwariya · Hina · Kunal · Kesha · Shilpa</span>
-        </div>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🌉</div><div class="leg-header-info"><div class="leg-name">San Francisco (Daly City) <span class="leg-nights">3 nights</span></div><div class="leg-dates">Sep 3 – Sep 6 · Airbnb near Palisades Park</div></div></div>
+    <div class="leg-body">Big group Airbnb — 9 adults + toddler + newborn all staying together. <strong>Drive from Santa Rosa · 1h 5m · 55 mi</strong> 🛣️</div>
+    <div class="leg-tags">
+      <span class="leg-tag person">👨‍👩‍👧 6 travelers</span>
+      <span class="leg-tag person">👋 + Hina, Kunal, Kesha, Shilpa</span>
+      <span class="leg-tag person">👶 + Kunal & Kesha's newborn</span>
+      <span class="leg-tag activity">🌊 17 Mile Drive</span>
+      <span class="leg-tag activity">🏡 Smruti's home (1 day)</span>
+      <span class="leg-status booked">Stay booked</span>
     </div>
+    <div class="leg-bookings">
+      <div class="booking-mini"><span class="booking-mini-icon hotel">🏠</span><span>Airbnb · Daly City · Hosted by Bella · 9 adults + Radhika + newborn</span></div>
+      <div class="booking-mini"><span class="booking-mini-icon hotel">🕓</span><span>Check-in Thu Sep 3 (after 4 PM) · Checkout Sun Sep 6 (before 11 AM)</span></div>
+      <div class="booking-mini"><span class="booking-mini-icon">👥</span><span>Adults: Harin · Rajendra · Ketki · Rudra · Aishwariya · Hina · Kunal · Kesha · Shilpa</span></div>
+    </div>
+  </div>
 
-    <!-- Leg 6: LA -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🌴</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Los Angeles, CA <span class="leg-nights">2 nights</span></div>
-          <div class="leg-dates">Sep 7 – Sep 9 · after 6.5h SF drive</div>
-        </div>
-      </div>
-      <div class="leg-body">Universal Studios + downtown.</div>
-      <div class="leg-tags">
-        <span class="leg-tag activity">🎬 Universal Studios</span>
-        <span class="leg-tag activity">🏙️ Downtown LA</span>
-        <span class="leg-status planned">Not booked</span>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🌴</div><div class="leg-header-info"><div class="leg-name">Los Angeles, CA <span class="leg-nights">3 nights</span></div><div class="leg-dates">Sep 6 – Sep 9</div></div></div>
+    <div class="leg-body">Universal Studios + downtown. <strong>Drive from SF · 6h 23m · 403 mi</strong> 🛣️</div>
+    <div class="leg-tags">
+      <span class="leg-tag activity">🎬 Universal Studios</span>
+      <span class="leg-tag activity">🏙️ Downtown LA</span>
+      <span class="leg-status planned">Not booked</span>
     </div>
+  </div>
 
-    <!-- Leg 7: Vegas -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🎰</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Las Vegas, NV <span class="leg-nights">2 nights</span></div>
-          <div class="leg-dates">Sep 10 – Sep 12 · after 4.5h LA drive</div>
-        </div>
-      </div>
-      <div class="leg-body">Casino strip + Old Vegas / Fremont Street.</div>
-      <div class="leg-tags">
-        <span class="leg-tag activity">🎲 The Strip</span>
-        <span class="leg-tag activity">🌟 Old Las Vegas</span>
-        <span class="leg-status planned">Not booked</span>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🏞️</div><div class="leg-header-info"><div class="leg-name">Grand Canyon South Rim <span class="leg-nights">2 nights</span></div><div class="leg-dates">Sep 9 – Sep 11</div></div></div>
+    <div class="leg-body"><strong>⚠️ Big drive day from LA · 8h 19m · 491 mi</strong> — the longest single leg of the west coast loop. Grand Canyon lodging books up months ahead.</div>
+    <div class="leg-tags">
+      <span class="leg-tag activity">🏜️ Grand Canyon South Rim</span>
+      <span class="leg-status planned">Not booked · ⚠️ Books up</span>
     </div>
+  </div>
 
-    <!-- Leg 8: Grand Canyon -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🏜️</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Grand Canyon + nearby <span class="leg-nights">7 nights</span></div>
-          <div class="leg-dates">Sep 13 – Sep 20</div>
-        </div>
-      </div>
-      <div class="leg-body">Grand Canyon plus "other beautiful places" (Zion, Bryce, Antelope Canyon nearby?).</div>
-      <div class="leg-tags">
-        <span class="leg-tag activity">🏜️ Grand Canyon</span>
-        <span class="leg-status planned">Not booked · ⚠️ Books up</span>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🌀</div><div class="leg-header-info"><div class="leg-name">Page, AZ <span class="leg-nights">2 nights</span></div><div class="leg-dates">Sep 11 – Sep 13 · Airbnb hosted by Kiki</div></div></div>
+    <div class="leg-body">Antelope Canyon, Horseshoe Bend, Lake Powell area. <strong>Drive from GC · 2h 16m · 134 mi</strong> 🛣️</div>
+    <div class="leg-tags">
+      <span class="leg-tag activity">🌀 Antelope Canyon</span>
+      <span class="leg-tag activity">🏞️ Horseshoe Bend</span>
+      <span class="leg-tag activity">🌊 Lake Powell</span>
+      <span class="leg-status booked">Stay booked</span>
     </div>
+    <div class="leg-bookings">
+      <div class="booking-mini"><span class="booking-mini-icon hotel">🏠</span><span>Airbnb Page · Hosted by Kiki · Check-in Fri 4 PM · Checkout Sun 10 AM</span></div>
+    </div>
+  </div>
 
-    <!-- Gap -->
-    <div class="leg-card gap">
-      <div class="leg-header">
-        <div class="leg-emoji">❓</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Gap <span class="leg-nights gap">~4 days</span></div>
-          <div class="leg-dates">Sep 20 – Sep 24</div>
-        </div>
-      </div>
-      <div class="leg-body">Return from Grand Canyon → where? Home to DC first? Direct to Vermont?</div>
-      <div class="leg-tags">
-        <span class="leg-status gap">Needs planning</span>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🌵</div><div class="leg-header-info"><div class="leg-name">Monument Valley, AZ <span class="leg-nights">1 night</span></div><div class="leg-dates">Sep 13 – Sep 14</div></div></div>
+    <div class="leg-body">Iconic red-rock buttes on the Navajo Nation. <strong>Drive from Page · 2h · 124 mi</strong> 🛣️</div>
+    <div class="leg-tags">
+      <span class="leg-tag activity">🌵 Monument Valley</span>
+      <span class="leg-tag activity">🎬 John Ford's Point</span>
+      <span class="leg-status planned">Not booked</span>
     </div>
+  </div>
 
-    <!-- Leg 9: Vermont & Boston -->
-    <div class="leg-card">
-      <div class="leg-header">
-        <div class="leg-emoji">🍂</div>
-        <div class="leg-header-info">
-          <div class="leg-name">Vermont · Mt. Washington · Boston <span class="leg-nights">4 nights</span></div>
-          <div class="leg-dates">Sep 24 – Sep 28</div>
-        </div>
-      </div>
-      <div class="leg-body">New England fall foliage, mountain views, and city time in Boston.</div>
-      <div class="leg-tags">
-        <span class="leg-tag person">🏡 Dicky's home (VT)</span>
-        <span class="leg-tag activity">🍁 Fall foliage</span>
-        <span class="leg-tag activity">⛰️ Mt. Washington</span>
-        <span class="leg-tag activity">🏙️ Boston</span>
-        <span class="leg-status planned">Not booked</span>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🏜️</div><div class="leg-header-info"><div class="leg-name">Moab, UT <span class="leg-nights">2 nights</span></div><div class="leg-dates">Sep 14 – Sep 16 · Airbnb hosted by Kristen</div></div></div>
+    <div class="leg-body">Base for Arches NP and Canyonlands NP. <strong>Drive from Monument Valley · 2h 22m · 148 mi</strong> 🛣️</div>
+    <div class="leg-tags">
+      <span class="leg-tag activity">🌄 Arches NP</span>
+      <span class="leg-tag activity">🏔️ Canyonlands NP</span>
+      <span class="leg-tag activity">🗿 Delicate Arch</span>
+      <span class="leg-status booked">Stay booked</span>
     </div>
+    <div class="leg-bookings">
+      <div class="booking-mini"><span class="booking-mini-icon hotel">🏠</span><span>Airbnb Moab · Hosted by Kristen · Check-in Mon 4 PM · Checkout Wed 11 AM</span></div>
+    </div>
+  </div>
 
-  </section>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🏔️</div><div class="leg-header-info"><div class="leg-name">Bryce Canyon, UT <span class="leg-nights">1 night</span></div><div class="leg-dates">Sep 16 – Sep 17</div></div></div>
+    <div class="leg-body">Hoodoos, sunrise viewpoints, otherworldly amphitheater. <strong>Drive from Moab · 4h 35m · 268 mi</strong> 🛣️</div>
+    <div class="leg-tags">
+      <span class="leg-tag activity">🏔️ Bryce Canyon NP</span>
+      <span class="leg-tag activity">🌅 Sunrise Point</span>
+      <span class="leg-status planned">Not booked</span>
+    </div>
+  </div>
 
-  <!-- ============= BOOKINGS ============= -->
-  <section class="panel" data-panel="bookings" hidden>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🎰</div><div class="leg-header-info"><div class="leg-name">Las Vegas, NV <span class="leg-nights">2 nights</span></div><div class="leg-dates">Sep 17 – Sep 19</div></div></div>
+    <div class="leg-body">Casino Strip + Old Vegas / Fremont Street. <strong>Drive from Bryce · 3h 32m · 260 mi</strong> 🛣️ · Final west coast stop before flying home.</div>
+    <div class="leg-tags">
+      <span class="leg-tag activity">🎲 The Strip</span>
+      <span class="leg-tag activity">🌟 Old Las Vegas</span>
+      <span class="leg-status planned">Stay not booked</span>
+    </div>
+    <div class="leg-bookings">
+      <div class="booking-mini"><span class="booking-mini-icon">✈️</span><span>United UA 1352 · LAS → EWR · Sat Sep 19 · 1:30 PM → 9:31 PM · 5h 1m · 7 passengers</span></div>
+    </div>
+  </div>
 
-    <div class="summary" style="margin-bottom: 24px;">
-      <div class="tile">
-        <div class="tile-icon">✈️</div>
-        <div class="tile-num">7</div>
-        <div class="tile-label">Flights</div>
-      </div>
-      <div class="tile">
-        <div class="tile-icon">🏨</div>
-        <div class="tile-num">2</div>
-        <div class="tile-label">Stays</div>
-      </div>
-      <div class="tile">
-        <div class="tile-icon">🚗</div>
-        <div class="tile-num">1</div>
-        <div class="tile-label">Rentals</div>
-      </div>
-      <div class="tile">
-        <div class="tile-icon">📍</div>
-        <div class="tile-num">16</div>
-        <div class="tile-label">Stops</div>
-      </div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🏡</div><div class="leg-header-info"><div class="leg-name">Voorhees, NJ <span class="leg-nights">~5 nights</span></div><div class="leg-dates">Sat Sep 19 (late) – Sep 24 · rest before Vermont</div></div></div>
+    <div class="leg-body">Land EWR 9:31 PM. Drive to Voorhees (~1h 45m). Home for a few days before New England leg.</div>
+    <div class="leg-tags">
+      <span class="leg-tag">🏡 Home base</span>
+      <span class="leg-status booked">Return flight booked</span>
     </div>
+  </div>
 
-    <div class="section-header">
-      <div class="section-title">✈️ All Flights</div>
-      <div class="section-count">7 · 3 dates</div>
+  <div class="leg-card">
+    <div class="leg-header"><div class="leg-emoji">🍂</div><div class="leg-header-info"><div class="leg-name">Vermont · Mt. Washington · Boston <span class="leg-nights">4 nights</span></div><div class="leg-dates">Sep 24 – Sep 28</div></div></div>
+    <div class="leg-body">New England fall foliage, mountain views, and city time in Boston.</div>
+    <div class="leg-tags">
+      <span class="leg-tag person">🏡 Dicky's home (VT)</span>
+      <span class="leg-tag activity">🍁 Fall foliage</span>
+      <span class="leg-tag activity">⛰️ Mt. Washington</span>
+      <span class="leg-tag activity">🏙️ Boston</span>
+      <span class="leg-status planned">Not booked</span>
     </div>
-    <div class="booking-card">
-      <div class="booking-header">
-        <span class="booking-badge">📅 Wed, Aug 5, 2026</span>
-        <span class="booking-airline">Frontier F9 4707</span>
-      </div>
-      <div class="booking-route">
-        <div class="booking-endpoint">
-          <div class="endpoint-code">IAD</div>
-          <div class="endpoint-city">Washington-Dulles</div>
-          <div class="endpoint-time">7:48 AM</div>
-        </div>
-        <div class="booking-path">
-          <div class="path-line"></div>
-          <div class="path-duration">2h 11m</div>
-        </div>
-        <div class="booking-endpoint right">
-          <div class="endpoint-code">ATL</div>
-          <div class="endpoint-city">Atlanta</div>
-          <div class="endpoint-time">9:59 AM</div>
-        </div>
-      </div>
-      <div class="pnr-row">
-        <div class="pnr-pax">👥 5 passengers</div>
-        <div class="pnr-detail">Harin · Ketkibahen · Rudra · Aishwariya · Radhika</div>
-      </div>
-      <div class="pnr-row">
-        <div class="pnr-pax">👥 1 passenger</div>
-        <div class="pnr-detail">Rajendra · Seat 1C · 1 carry-on + 2 checked</div>
-      </div>
-    </div>
+  </div>
+</section>
 
-    <div class="booking-card">
-      <div class="booking-header">
-        <span class="booking-badge">📅 Fri, Aug 7, 2026</span>
-        <span class="booking-airline">Frontier F9 2497</span>
-      </div>
-      <div class="booking-route">
-        <div class="booking-endpoint">
-          <div class="endpoint-code">ATL</div>
-          <div class="endpoint-city">Atlanta</div>
-          <div class="endpoint-time">9:47 AM</div>
-        </div>
-        <div class="booking-path">
-          <div class="path-line"></div>
-          <div class="path-duration">1h 38m</div>
-        </div>
-        <div class="booking-endpoint right">
-          <div class="endpoint-code">IND</div>
-          <div class="endpoint-city">Indianapolis</div>
-          <div class="endpoint-time">11:25 AM</div>
-        </div>
-      </div>
-      <div class="pnr-row">
-        <div class="pnr-pax">👥 5 passengers total (3 separate bookings)</div>
-        <div class="pnr-detail">Rajendra (Seat 1A) · Ketkibahen · Rudra · Aishwariya · Radhika</div>
-      </div>
-    </div>
+<!-- BOOKINGS -->
+<section class="panel" data-panel="bookings" hidden>
+  <div class="summary" style="margin-bottom: 24px;">
+    <div class="tile"><div class="tile-icon">✈️</div><div class="tile-num">9</div><div class="tile-label">Flights</div></div>
+    <div class="tile"><div class="tile-icon">🏨</div><div class="tile-num">5</div><div class="tile-label">Stays</div></div>
+    <div class="tile"><div class="tile-icon">🚗</div><div class="tile-num">1</div><div class="tile-label">Rentals</div></div>
+    <div class="tile"><div class="tile-icon">🎟️</div><div class="tile-num">1</div><div class="tile-label">Tours</div></div>
+  </div>
 
-    <!-- ORD → PHL Aug 9 -->
-    <div class="booking-card">
-      <div class="booking-header">
-        <span class="booking-badge">📅 Sun, Aug 9, 2026 · Late</span>
-        <span class="booking-airline">Frontier F9 2112</span>
-      </div>
-      <div class="booking-route">
-        <div class="booking-endpoint">
-          <div class="endpoint-code">ORD</div>
-          <div class="endpoint-city">Chicago-O'Hare</div>
-          <div class="endpoint-time">8:52 PM</div>
-        </div>
-        <div class="booking-path">
-          <div class="path-line"></div>
-          <div class="path-duration">2h 23m</div>
-        </div>
-        <div class="booking-endpoint right">
-          <div class="endpoint-code">PHL</div>
-          <div class="endpoint-city">Philadelphia</div>
-          <div class="endpoint-time">12:15 AM Mon</div>
-        </div>
-      </div>
-      <div class="pnr-row">
-        <div class="pnr-pax">👥 5 passengers total (2 separate bookings)</div>
-        <div class="pnr-detail">Rajendra (Seat 1A · 1 carry-on + 2 checked) · Ketkibahen · Rudra · Aishwariya · Radhika</div>
-      </div>
-    </div>
+  <div class="section-header">
+    <div class="section-title">✈️ All Flights</div>
+    <div class="section-count">4 dates</div>
+  </div>
 
-    <div class="section-header">
-      <div class="section-title">🏨 All Stays</div>
-      <div class="section-count">2 booked</div>
+  <div class="booking-card">
+    <div class="booking-header"><span class="booking-badge">📅 Wed, Aug 5, 2026</span><span class="booking-airline">Frontier F9 4707</span></div>
+    <div class="booking-route">
+      <div class="booking-endpoint"><div class="endpoint-code">IAD</div><div class="endpoint-city">Washington-Dulles</div><div class="endpoint-time">7:48 AM</div></div>
+      <div class="booking-path"><div class="path-line"></div><div class="path-duration">2h 11m</div></div>
+      <div class="booking-endpoint right"><div class="endpoint-code">ATL</div><div class="endpoint-city">Atlanta</div><div class="endpoint-time">9:59 AM</div></div>
     </div>
-    <div class="booking-card hotel">
-      <div class="booking-header">
-        <span class="booking-badge">🏨 Aloft Atlanta Perimeter</span>
-        <span class="booking-airline">Aug 5–7</span>
-      </div>
-      <div class="booking-meta">
-        <span class="meta-chip"><strong>2 nights · 1 King Bed</strong></span>
-        <span class="meta-sep">·</span>
-        <span class="meta-chip">2 guests</span>
-        <span class="meta-sep">·</span>
-        <span class="meta-chip">Non-refundable</span>
-      </div>
-      <div class="pnr-row">
-        <div class="pnr-pax">Primary guest: Harin</div>
-        <div class="pnr-detail">Check-in Aug 5 · 4 PM · Check-out Aug 7 · 11 AM</div>
-      </div>
-    </div>
+    <div class="pnr-row"><div class="pnr-pax">👥 6 travelers (2 bookings)</div><div class="pnr-detail">Harin · Ketkibahen · Rudra · Aishwariya · Radhika · Rajendra (Seat 1C, 1CO+2CK)</div></div>
+  </div>
 
-    <div class="booking-card hotel">
-      <div class="booking-header">
-        <span class="booking-badge">🏠 Airbnb · Daly City (SF area)</span>
-        <span class="booking-airline">Sep 3–6</span>
-      </div>
-      <div class="booking-meta">
-        <span class="meta-chip"><strong>3 nights</strong></span>
-        <span class="meta-sep">·</span>
-        <span class="meta-chip">9 adults + 2 kids</span>
-        <span class="meta-sep">·</span>
-        <span class="meta-chip">Hosted by Bella</span>
-      </div>
-      <div class="pnr-row">
-        <div class="pnr-pax">Coastal area · near Palisades Park (Broadmoor)</div>
-        <div class="pnr-detail">Check-in Thu Sep 3 · after 4 PM · Checkout Sun Sep 6 · before 11 AM</div>
-      </div>
-      <div class="pnr-row">
-        <div class="pnr-pax">👥 Guests</div>
-        <div class="pnr-detail">Harin · Rajendra · Ketki · Rudra · Aishwariya · Hina · Kunal · Kesha · Shilpa · Radhika (2y) · Kunal & Kesha's newborn</div>
-      </div>
+  <div class="booking-card">
+    <div class="booking-header"><span class="booking-badge">📅 Fri, Aug 7, 2026</span><span class="booking-airline">Frontier F9 2497</span></div>
+    <div class="booking-route">
+      <div class="booking-endpoint"><div class="endpoint-code">ATL</div><div class="endpoint-city">Atlanta</div><div class="endpoint-time">9:47 AM</div></div>
+      <div class="booking-path"><div class="path-line"></div><div class="path-duration">1h 38m</div></div>
+      <div class="booking-endpoint right"><div class="endpoint-code">IND</div><div class="endpoint-city">Indianapolis</div><div class="endpoint-time">11:25 AM</div></div>
     </div>
+    <div class="pnr-row"><div class="pnr-pax">👥 5 passengers (3 bookings)</div><div class="pnr-detail">Rajendra (Seat 1A) · Ketkibahen · Rudra · Aishwariya · Radhika</div></div>
+  </div>
 
-    <div class="section-header">
-      <div class="section-title">🚗 All Car Rentals</div>
-      <div class="section-count">1 booked</div>
+  <div class="booking-card">
+    <div class="booking-header"><span class="booking-badge">📅 Sun, Aug 9, 2026 · Late</span><span class="booking-airline">Frontier F9 2112</span></div>
+    <div class="booking-route">
+      <div class="booking-endpoint"><div class="endpoint-code">ORD</div><div class="endpoint-city">Chicago-O'Hare</div><div class="endpoint-time">8:52 PM</div></div>
+      <div class="booking-path"><div class="path-line"></div><div class="path-duration">2h 23m</div></div>
+      <div class="booking-endpoint right"><div class="endpoint-code">PHL</div><div class="endpoint-city">Philadelphia</div><div class="endpoint-time">12:15 AM Mon</div></div>
     </div>
-    <div class="booking-card car">
-      <div class="booking-header">
-        <span class="booking-badge">🚗 Hertz · Kia Carnival</span>
-        <span class="booking-airline">Aug 5–7 · ATL</span>
-      </div>
-      <div class="booking-meta">
-        <span class="meta-chip"><strong>2 days · Minivan</strong></span>
-        <span class="meta-sep">·</span>
-        <span class="meta-chip">Kia Carnival</span>
-      </div>
-      <div class="pnr-row">
-        <div class="pnr-pax">Driver: Harin</div>
-        <div class="pnr-detail">Hertz Gold status · Pickup Aug 5 · Return Aug 7</div>
-      </div>
-    </div>
-  </section>
+    <div class="pnr-row"><div class="pnr-pax">👥 5 passengers (2 bookings)</div><div class="pnr-detail">Rajendra (Seat 1A · 1CO+2CK) · Ketkibahen · Rudra · Aishwariya · Radhika</div></div>
+  </div>
 
-  <!-- ============= FAMILY ============= -->
-  <section class="panel" data-panel="family" hidden>
+  <div class="booking-card">
+    <div class="booking-header"><span class="booking-badge">📅 Tue, Sep 1, 2026</span><span class="booking-airline">Delta DL 2023 → DL 1423</span></div>
+    <div class="booking-route">
+      <div class="booking-endpoint"><div class="endpoint-code">PHL</div><div class="endpoint-city">Philadelphia</div><div class="endpoint-time">7:20 AM</div></div>
+      <div class="booking-path"><div class="path-line"></div><div class="path-duration">7h 58m</div></div>
+      <div class="booking-endpoint right"><div class="endpoint-code">SMF</div><div class="endpoint-city">Sacramento</div><div class="endpoint-time">12:16 PM</div></div>
+    </div>
+    <div class="booking-meta">
+      <span class="meta-chip"><strong>Layover:</strong> SLC · 1h 36m</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-chip">Delta Main Basic</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-chip">Boeing 737-900</span>
+    </div>
+    <div class="pnr-row"><div class="pnr-pax">👥 7 passengers</div><div class="pnr-detail">Depart PHL Term D (D15) · Arrive SMF Term A (A1) · Same-day connection through SLC</div></div>
+  </div>
 
-    <div class="city-hero">
-      <div class="city-hero-emoji">👨‍👩‍👧</div>
-      <div class="city-hero-info">
-        <div class="city-hero-name">The Travelers</div>
-        <div class="city-hero-dates">6 people</div>
-      </div>
+  <div class="booking-card">
+    <div class="booking-header"><span class="booking-badge">📅 Sat, Sep 19, 2026 · Return</span><span class="booking-airline">United UA 1352</span></div>
+    <div class="booking-route">
+      <div class="booking-endpoint"><div class="endpoint-code">LAS</div><div class="endpoint-city">Las Vegas</div><div class="endpoint-time">1:30 PM</div></div>
+      <div class="booking-path"><div class="path-line"></div><div class="path-duration">5h 1m</div></div>
+      <div class="booking-endpoint right"><div class="endpoint-code">EWR</div><div class="endpoint-city">Newark</div><div class="endpoint-time">9:31 PM</div></div>
     </div>
+    <div class="booking-meta">
+      <span class="meta-chip"><strong>Boeing 737 MAX 8</strong></span>
+      <span class="meta-sep">·</span>
+      <span class="meta-chip">United Economy (XN)</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-chip">Nonstop</span>
+    </div>
+    <div class="pnr-row"><div class="pnr-pax">👥 7 passengers · Seats: 37A · 37B · 37E · 37F · 38A · 38B · 38C</div><div class="pnr-detail">Meal available (view menu on airline site) · ~1h 45m drive from EWR to Voorhees</div></div>
+  </div>
 
-    <div class="roster">
-      <div class="roster-row">
-        <div class="roster-avatar">Ha</div>
-        <div class="roster-info">
-          <div class="roster-name">Harin</div>
-          <div class="roster-role">Trip planner</div>
-        </div>
-      </div>
-      <div class="roster-row">
-        <div class="roster-avatar">Ra</div>
-        <div class="roster-info">
-          <div class="roster-name">Rajendra</div>
-          <div class="roster-role">Father</div>
-        </div>
-      </div>
-      <div class="roster-row">
-        <div class="roster-avatar">Ke</div>
-        <div class="roster-info">
-          <div class="roster-name">Ketkibahen</div>
-          <div class="roster-role">Mother</div>
-        </div>
-      </div>
-      <div class="roster-row">
-        <div class="roster-avatar">Ru</div>
-        <div class="roster-info">
-          <div class="roster-name">Rudra</div>
-          <div class="roster-role">Brother</div>
-        </div>
-      </div>
-      <div class="roster-row">
-        <div class="roster-avatar">Ai</div>
-        <div class="roster-info">
-          <div class="roster-name">Aishwariya</div>
-          <div class="roster-role">Sister-in-law</div>
-        </div>
-      </div>
-      <div class="roster-row">
-        <div class="roster-avatar">👶</div>
-        <div class="roster-info">
-          <div class="roster-name">Radhika</div>
-          <div class="roster-role">Niece · 2 years old</div>
-        </div>
-      </div>
-    </div>
+  <div class="section-header">
+    <div class="section-title">🏨 All Stays</div>
+    <div class="section-count">5 booked</div>
+  </div>
 
-    <div class="section-header">
-      <div class="section-title">👋 People We're Meeting</div>
-    </div>
-    <div class="note-card">
-      <div class="note-title">🍑 Atlanta · Zeel & Nikhil</div>
-      <div class="note-body">Aug 5–7 during the Perimeter Center stay.</div>
-    </div>
-    <div class="note-card">
-      <div class="note-title">🏁 Indianapolis · Pintu Kaka</div>
-      <div class="note-body">Aug 7–9 with a Chicago side trip.</div>
-    </div>
-    <div class="note-card">
-      <div class="note-title">🏡 Montclair · Sunita</div>
-      <div class="note-body">15-night stay at her home (Aug 10–25).</div>
-    </div>
-    <div class="note-card">
-      <div class="note-title">🌉 SF (Daly City) · Big group Airbnb Sep 3–6</div>
-      <div class="note-body">Joining at the Airbnb: <strong>Hina Desai</strong>, <strong>Kunal & Kesha</strong> (with their newborn 👶), <strong>Shilpa</strong>. Plus one day at <strong>Smruti's home</strong>.</div>
-    </div>
-    <div class="note-card">
-      <div class="note-title">🍂 Vermont · Dicky</div>
-      <div class="note-body">Sep 24–28 during the fall foliage leg.</div>
-    </div>
-  </section>
+  <div class="booking-card hotel">
+    <div class="booking-header"><span class="booking-badge">🏨 Aloft Atlanta Perimeter</span><span class="booking-airline">Aug 5–7</span></div>
+    <div class="booking-meta"><span class="meta-chip"><strong>2 nights · 1 King Bed</strong></span><span class="meta-sep">·</span><span class="meta-chip">2 guests</span><span class="meta-sep">·</span><span class="meta-chip">Non-refundable</span></div>
+    <div class="pnr-row"><div class="pnr-pax">Primary guest: Harin</div><div class="pnr-detail">Check-in Aug 5 · 4 PM · Check-out Aug 7 · 11 AM</div></div>
+  </div>
 
-  <footer>
-    <div class="updated">Updated Jul 18, 2026 · v7.6</div>
-    <div>Confirmation codes intentionally omitted — look them up via airline/hotel accounts</div>
-  </footer>
+  <div class="booking-card hotel">
+    <div class="booking-header"><span class="booking-badge">🏠 Airbnb · Santa Rosa, CA</span><span class="booking-airline">Sep 1–3</span></div>
+    <div class="booking-meta"><span class="meta-chip"><strong>2 nights</strong></span><span class="meta-sep">·</span><span class="meta-chip">Hosted by Scott</span><span class="meta-sep">·</span><span class="meta-chip">Sonoma wine country</span></div>
+    <div class="pnr-row"><div class="pnr-pax">First west coast stop after landing Sacramento</div><div class="pnr-detail">Check-in Tue Sep 1 · after 3 PM · Checkout Thu Sep 3 · before 11 AM</div></div>
+  </div>
+
+  <div class="booking-card hotel">
+    <div class="booking-header"><span class="booking-badge">🏠 Airbnb · Daly City (SF area)</span><span class="booking-airline">Sep 3–6</span></div>
+    <div class="booking-meta"><span class="meta-chip"><strong>3 nights</strong></span><span class="meta-sep">·</span><span class="meta-chip">9 adults + 2 kids</span><span class="meta-sep">·</span><span class="meta-chip">Hosted by Bella</span></div>
+    <div class="pnr-row"><div class="pnr-pax">Coastal area · near Palisades Park (Broadmoor)</div><div class="pnr-detail">Check-in Thu Sep 3 · after 4 PM · Checkout Sun Sep 6 · before 11 AM</div></div>
+    <div class="pnr-row"><div class="pnr-pax">👥 Guests</div><div class="pnr-detail">Harin · Rajendra · Ketki · Rudra · Aishwariya · Hina · Kunal · Kesha · Shilpa · Radhika (2y) · Kunal & Kesha's newborn</div></div>
+  </div>
+
+  <div class="booking-card hotel">
+    <div class="booking-header"><span class="booking-badge">🏠 Airbnb · Page, AZ</span><span class="booking-airline">Sep 11–13</span></div>
+    <div class="booking-meta"><span class="meta-chip"><strong>2 nights</strong></span><span class="meta-sep">·</span><span class="meta-chip">Hosted by Kiki</span><span class="meta-sep">·</span><span class="meta-chip">Antelope Canyon / Lake Powell area</span></div>
+    <div class="pnr-row"><div class="pnr-pax">Northern Arizona base — has a hot tub 🔥</div><div class="pnr-detail">Check-in Fri Sep 11 · after 4 PM · Checkout Sun Sep 13 · before 10 AM</div></div>
+  </div>
+
+  <div class="booking-card hotel">
+    <div class="booking-header"><span class="booking-badge">🏠 Airbnb · Moab, UT</span><span class="booking-airline">Sep 14–16</span></div>
+    <div class="booking-meta"><span class="meta-chip"><strong>2 nights</strong></span><span class="meta-sep">·</span><span class="meta-chip">Hosted by Kristen</span><span class="meta-sep">·</span><span class="meta-chip">Arches / Canyonlands base</span></div>
+    <div class="pnr-row"><div class="pnr-pax">Utah desert · red rock country</div><div class="pnr-detail">Check-in Mon Sep 14 · after 4 PM · Checkout Wed Sep 16 · before 11 AM</div></div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-title">🚗 All Car Rentals</div>
+    <div class="section-count">1 booked</div>
+  </div>
+  <div class="booking-card car">
+    <div class="booking-header"><span class="booking-badge">🚗 Hertz · Kia Carnival</span><span class="booking-airline">Aug 5–7 · ATL</span></div>
+    <div class="booking-meta"><span class="meta-chip"><strong>2 days · Minivan</strong></span><span class="meta-sep">·</span><span class="meta-chip">Kia Carnival</span></div>
+    <div class="pnr-row"><div class="pnr-pax">Driver: Harin</div><div class="pnr-detail">Hertz Gold status · Pickup Aug 5 · Return Aug 7</div></div>
+  </div>
+</section>
+
+<!-- FAMILY -->
+<section class="panel" data-panel="family" hidden>
+  <div class="city-hero">
+    <div class="city-hero-emoji">👨‍👩‍👧</div>
+    <div class="city-hero-info">
+      <div class="city-hero-name">The Travelers</div>
+      <div class="city-hero-dates">6 people</div>
+    </div>
+  </div>
+
+  <div class="roster">
+    <div class="roster-row"><div class="roster-avatar">Ha</div><div class="roster-info"><div class="roster-name">Harin</div><div class="roster-role">Trip planner</div></div></div>
+    <div class="roster-row"><div class="roster-avatar">Ra</div><div class="roster-info"><div class="roster-name">Rajendra</div><div class="roster-role">Father</div></div></div>
+    <div class="roster-row"><div class="roster-avatar">Ke</div><div class="roster-info"><div class="roster-name">Ketkibahen</div><div class="roster-role">Mother</div></div></div>
+    <div class="roster-row"><div class="roster-avatar">Ru</div><div class="roster-info"><div class="roster-name">Rudra</div><div class="roster-role">Brother</div></div></div>
+    <div class="roster-row"><div class="roster-avatar">Ai</div><div class="roster-info"><div class="roster-name">Aishwariya</div><div class="roster-role">Sister-in-law</div></div></div>
+    <div class="roster-row"><div class="roster-avatar">👶</div><div class="roster-info"><div class="roster-name">Radhika</div><div class="roster-role">Niece · 2 years old</div></div></div>
+  </div>
+
+  <div class="section-header"><div class="section-title">👋 People We're Meeting</div></div>
+  <div class="note-card"><div class="note-title">🏛️ DC · +2 local family joining Capitol tour</div><div class="note-body">Mon Jul 20 · 11:20 AM</div></div>
+  <div class="note-card"><div class="note-title">🍑 Atlanta · Zeel & Nikhil</div><div class="note-body">Aug 5–7 during the Perimeter Center stay.</div></div>
+  <div class="note-card"><div class="note-title">🏁 Indianapolis · Pintu Kaka</div><div class="note-body">Aug 7–9 with a Chicago side trip.</div></div>
+  <div class="note-card"><div class="note-title">🏡 Montclair · Sunita</div><div class="note-body">15-night stay at her home (Aug 10–25).</div></div>
+  <div class="note-card"><div class="note-title">🌉 SF (Daly City) · Big group Airbnb Sep 3–6</div><div class="note-body">Joining at the Airbnb: <strong>Hina Desai</strong>, <strong>Kunal & Kesha</strong> (with their newborn 👶), <strong>Shilpa</strong>. Plus one day at <strong>Smruti's home</strong>.</div></div>
+  <div class="note-card"><div class="note-title">🍂 Vermont · Dicky</div><div class="note-body">Sep 24–28 during the fall foliage leg.</div></div>
+</section>
+
+<footer>
+  <div class="updated">Updated Aug 7, 2026 · v9.1 · +Return flight LAS→EWR</div>
+  <div>Confirmation codes intentionally omitted — look them up via airline/hotel accounts</div>
+</footer>
 
 </div>
 
-<div id="toast" class="toast">Copied to clipboard! 📋</div>
-
 <script>
-  // Countdown to Sun Jul 19 (DC trip departs)
   (function() {
     var target = new Date('2026-07-19T09:00:00-04:00');
     var now = new Date();
@@ -1501,145 +671,87 @@
     if (el) el.textContent = days;
   })();
 
-  // TAB switching + URL hash routing
   (function() {
     var tabs = document.querySelectorAll('.tab');
     var panels = document.querySelectorAll('.panel');
-
     function activate(name) {
-      tabs.forEach(function(t) {
-        t.classList.toggle('active', t.dataset.tab === name);
-      });
-      panels.forEach(function(p) {
-        p.hidden = p.dataset.panel !== name;
-      });
+      tabs.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === name); });
+      panels.forEach(function(p) { p.hidden = p.dataset.panel !== name; });
       window.scrollTo({ top: 0, behavior: 'auto' });
-      try {
-        if (history.replaceState) {
-          history.replaceState(null, '', '#' + name);
-        }
-      } catch (e) { /* sandboxed iframe — ignore */ }
+      try { if (history.replaceState) history.replaceState(null, '', '#' + name); } catch (e) {}
       if (name === 'overview' && window._tripMap) {
         setTimeout(function() { window._tripMap.invalidateSize(); }, 50);
       }
     }
-
-    tabs.forEach(function(t) {
-      t.addEventListener('click', function() { activate(t.dataset.tab); });
-    });
-
+    tabs.forEach(function(t) { t.addEventListener('click', function() { activate(t.dataset.tab); }); });
     var initial = (window.location.hash || '').replace('#', '');
     var valid = ['overview', 'itinerary', 'bookings', 'family'];
     if (valid.indexOf(initial) !== -1) activate(initial);
-
     window.addEventListener('hashchange', function() {
       var name = (window.location.hash || '').replace('#', '');
       if (valid.indexOf(name) !== -1) activate(name);
     });
   })();
 
-  // PNR copy
-  function copy(el) {
-    var text = el.textContent.trim();
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(showToast).catch(fallback);
-    } else {
-      fallback();
-    }
-    function fallback() {
-      var t = document.createElement('textarea');
-      t.value = text;
-      t.style.position = 'fixed';
-      t.style.opacity = 0;
-      document.body.appendChild(t);
-      t.select();
-      try { document.execCommand('copy'); showToast(); } catch (e) {}
-      document.body.removeChild(t);
-    }
-  }
-  function showToast() {
-    var toast = document.getElementById('toast');
-    toast.textContent = 'Copied to clipboard! 📋';
-    toast.classList.add('show');
-    setTimeout(function() { toast.classList.remove('show'); }, 1600);
-  }
-
-  // MAP with all cities
   function initMap() {
     if (typeof L === 'undefined') {
       var mapEl = document.getElementById('map');
       if (mapEl) mapEl.innerHTML = '<div style="padding:40px 20px;text-align:center;color:#5a6577;font-size:13px;line-height:1.6;">🗺️<br><br>Map couldn\'t load.<br><span style="font-size:11px;opacity:0.7;">Needs internet to fetch map tiles.</span></div>';
       return;
     }
-
     var cities = [
-      { name: 'Washington DC', coords: [38.9072, -77.0369], detail: 'Sun Jul 19 – Wed Jul 22 · Capitol tour Mon', order: 0 },
-      { name: 'Richmond, VA', coords: [37.5407, -77.4360], detail: 'Jul 25 – Aug 5', order: 1 },
-      { name: 'Atlanta, GA', coords: [33.6407, -84.4277], detail: 'Aug 5–7 · Perimeter Center', order: 2 },
-      { name: 'Indianapolis, IN', coords: [39.7173, -86.2944], detail: 'Aug 7–9 · Pintu Kaka', order: 3 },
-      { name: 'Chicago, IL', coords: [41.8781, -87.6298], detail: 'Aug 8–9 · Fly out from ORD Sun 8:52 PM', order: 4 },
-      { name: 'Montclair, NJ', coords: [40.8259, -74.2090], detail: 'Aug 10–25 · Sunita\'s home', order: 5 },
-      { name: 'NYC', coords: [40.7128, -74.0060], detail: 'Day trip from Montclair', order: 5 },
-      { name: 'Niagara Falls', coords: [43.0962, -79.0377], detail: 'Day trip from Montclair', order: 5 },
-      { name: 'Voorhees, NJ', coords: [39.8515, -74.9530], detail: 'Aug 25 – Sep 3 · South Jersey', order: 6 },
-      { name: 'Daly City (SF area)', coords: [37.6879, -122.4702], detail: 'Sep 3–6 · Airbnb · Kunal, Kesha, Smruti', order: 7 },
-      { name: '17 Mile Drive', coords: [36.6002, -121.9401], detail: 'Monterey/Pacific Grove', order: 7 },
-      { name: 'Los Angeles', coords: [34.0522, -118.2437], detail: 'Sep 7–9 · Universal Studios', order: 8 },
-      { name: 'Las Vegas', coords: [36.1699, -115.1398], detail: 'Sep 10–12 · Casinos', order: 9 },
-      { name: 'Grand Canyon', coords: [36.1069, -112.1129], detail: 'Sep 13–20 · 7 nights', order: 10 },
-      { name: 'Vermont', coords: [44.2601, -72.5806], detail: 'Sep 24–28 · Fall foliage · Dicky', order: 11 },
-      { name: 'Mt. Washington', coords: [44.2706, -71.3033], detail: 'New Hampshire · Sep 24–28', order: 11 },
-      { name: 'Boston', coords: [42.3601, -71.0589], detail: 'Sep 24–28', order: 11 }
+      { name: 'Washington DC', coords: [38.9072, -77.0369], detail: 'Sun Jul 19 – Wed Jul 22 · Capitol tour Mon', order: 1 },
+      { name: 'Richmond, VA', coords: [37.5407, -77.4360], detail: 'Jul 25 – Aug 5', order: 2 },
+      { name: 'Atlanta, GA', coords: [33.6407, -84.4277], detail: 'Aug 5–7 · Perimeter Center', order: 3 },
+      { name: 'Indianapolis, IN', coords: [39.7173, -86.2944], detail: 'Aug 7 · Pintu Kaka', order: 4 },
+      { name: 'Chicago, IL', coords: [41.8781, -87.6298], detail: 'Aug 8–9 · Fly out ORD Sun 8:52 PM', order: 5 },
+      { name: 'Montclair, NJ', coords: [40.8259, -74.2090], detail: 'Aug 10–25 · Sunita\'s home', order: 6 },
+      { name: 'NYC', coords: [40.7128, -74.0060], detail: 'Day trip from Montclair', order: 6 },
+      { name: 'Niagara Falls', coords: [43.0962, -79.0377], detail: 'Day trip from Montclair', order: 6 },
+      { name: 'Voorhees, NJ', coords: [39.8515, -74.9530], detail: 'Aug 25 – Sep 1 · Home base', order: 7 },
+      { name: 'Sacramento (land)', coords: [38.5816, -121.4944], detail: 'Sep 1 · Land Delta 12:16 PM', order: 8 },
+      { name: 'Santa Rosa, CA', coords: [38.4404, -122.7141], detail: 'Sep 1–3 · Airbnb (Scott) · Wine country', order: 8 },
+      { name: 'Daly City (SF)', coords: [37.6879, -122.4702], detail: 'Sep 3–6 · Airbnb (Bella) · Kunal, Kesha, Smruti', order: 9 },
+      { name: '17 Mile Drive', coords: [36.6002, -121.9401], detail: 'Monterey/Pacific Grove', order: 9 },
+      { name: 'Los Angeles', coords: [34.0522, -118.2437], detail: 'Sep 6–9 · Universal Studios · 403 mi from SF', order: 10 },
+      { name: 'Grand Canyon (South Rim)', coords: [36.0544, -112.1401], detail: 'Sep 9–11 · 491 mi drive from LA (8h)', order: 11 },
+      { name: 'Page, AZ', coords: [36.9147, -111.4558], detail: 'Sep 11–13 · Airbnb (Kiki) · Antelope Canyon', order: 12 },
+      { name: 'Monument Valley', coords: [36.9980, -110.0985], detail: 'Sep 13–14 · Iconic red rocks · Navajo Nation', order: 13 },
+      { name: 'Moab, UT', coords: [38.5733, -109.5498], detail: 'Sep 14–16 · Airbnb (Kristen) · Arches / Canyonlands', order: 14 },
+      { name: 'Bryce Canyon', coords: [37.5930, -112.1871], detail: 'Sep 16–17 · Hoodoos · 268 mi from Moab', order: 15 },
+      { name: 'Las Vegas', coords: [36.1699, -115.1398], detail: 'Sep 17–19 · Final west stop · Fly LAS→EWR Sat', order: 16 },
+      { name: 'Vermont', coords: [44.2601, -72.5806], detail: 'Sep 24–28 · Fall foliage · Dicky', order: 17 },
+      { name: 'Mt. Washington', coords: [44.2706, -71.3033], detail: 'New Hampshire · Sep 24–28', order: 17 },
+      { name: 'Boston', coords: [42.3601, -71.0589], detail: 'Sep 24–28', order: 17 }
     ];
-
     var map = L.map('map', {
-      zoomControl: true,
-      scrollWheelZoom: false,
-      dragging: !L.Browser.mobile,
-      tap: false
+      zoomControl: true, scrollWheelZoom: false,
+      dragging: !L.Browser.mobile, tap: false
     });
     window._tripMap = map;
-
     var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     L.tileLayer(isDark
       ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
       : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://openstreetmap.org">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
-      subdomains: 'abcd',
-      maxZoom: 18
+      attribution: '&copy; OSM &copy; CARTO', subdomains: 'abcd', maxZoom: 18
     }).addTo(map);
-
-    // Fit to bounds
     map.fitBounds(L.latLngBounds(cities.map(function(c) { return c.coords; })), { padding: [30, 30] });
-
-    // Route: DC, Richmond, ATL, IND, Chicago, Montclair, Voorhees, SF, LA, LV, GC, VT
-    var routeOrder = [0, 1, 2, 3, 4, 5, 8, 9, 11, 12, 13, 14];
+    // Route: DC→Richmond→ATL→IND→Chicago→Montclair→Voorhees→Sacramento→Santa Rosa→Daly City→LA→GC→Page→Monument Valley→Moab→Bryce→Vegas→Vermont
+    // idx:    0   1       2   3   4       5         8        9          10         11        13  14  15   16              17    18    19    20
+    var routeOrder = [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20];
     var routePoints = routeOrder.map(function(i) { return cities[i].coords; });
-    L.polyline(routePoints, {
-      color: '#0f766e',
-      weight: 2,
-      opacity: 0.55,
-      dashArray: '5, 7'
-    }).addTo(map);
-
-    // Add pins
+    L.polyline(routePoints, { color: '#0f766e', weight: 2, opacity: 0.55, dashArray: '5, 7' }).addTo(map);
     cities.forEach(function(city) {
       var icon = L.divIcon({
         className: 'city-pin',
-        html: '<div class="city-pin-inner">' + (city.order || '·') + '</div>',
-        iconSize: [22, 22],
-        iconAnchor: [11, 11]
+        html: '<div class="city-pin-inner">' + city.order + '</div>',
+        iconSize: [22, 22], iconAnchor: [11, 11]
       });
       L.marker(city.coords, { icon: icon }).addTo(map)
         .bindPopup('<div class="popup-title">' + city.name + '</div><div class="popup-sub">' + city.detail + '</div>');
     });
   }
-
-  if (document.readyState === 'complete') {
-    initMap();
-  } else {
-    window.addEventListener('load', initMap);
-  }
+  if (document.readyState === 'complete') { initMap(); } else { window.addEventListener('load', initMap); }
 </script>
 
 </body>
